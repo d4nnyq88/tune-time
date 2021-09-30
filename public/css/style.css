@@ -1,3 +1,55 @@
+
+.flex-container{
+    background-color: lightgray;
+    height: 100vh;
+}
+
+.logo{
+    background-color: #51e415;
+    border: 1px solid black;
+    height: 10vh;
+    text-align: center;
+    color:black;
+}
+
+.Recent-playlist{
+    background-color:#ff5500;
+    border: 1px solid black;
+    width: 33%;
+    height: 33%;
+}
+
+ul li a { 
+    display:block;
+    width:inherit;
+    height:inherit;
+    text-decoration: none;
+    color: black;
+    font-size: 28px;
+    line-height: 45px;
+    
+ }
+
+ .title-duration-genre{
+     line-height: 5px;
+     margin-bottom: 50px;
+     text-align: center;
+ }
+
+ .duration, .genre{
+     font-size: 22px;
+     color:black;
+ }
+
+.current-playlist-container{
+    background-color: #51e415;
+    border: 1px solid black;
+    width: 33%;
+    height: auto;
+    margin: 200px 0px 400px 400px;
+    text-align: center;
+    color: black;
+
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
