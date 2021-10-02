@@ -4,16 +4,16 @@ const { User, Playlist } = require('../models');
 const userData = require('./userData.json');
 const playlistData = require('./playlistData.json');
 
-const seedDatabase = () => {
- sequelize.sync({ force: true });
+const seedDatabase = async () => {
+  await sequelize.sync({ force: true });
 
-  User.create(userData, {
+  const user= await User.create(userData, {
     individualHooks: true,
     returning: true,
   });
 
-  Playlist.create(playlistData)
-
+  const playList= await Playlist.create(playlistData);
+  
   process.exit(0);
 };
 
