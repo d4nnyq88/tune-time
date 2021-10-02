@@ -12,7 +12,6 @@ const generateBtn = $(`.submitBtn`);
 promptForm.hide();
 
 // Spotify Token
-let token = ``;
 const clientId = '8f62dc31962f42fabe1974961a756d45';
 const clientSecret = 'ca84a1572ec940789947e1428e236a11';
 
@@ -31,8 +30,6 @@ const _getToken = async () => {
     token = data.access_token;
     return data.access_token;
 };
-
-_getToken();
 
 // Prompt form when user clicks generateButton
 generateButton.on(`click`, event => {
@@ -74,8 +71,10 @@ function generatePlaylist(title,duration) {
 
     console.log(`The duration of the playlist is ${duration} minutes or ${durationInMs} milliseconds.`);
 
-    fetchTracks().then(tracks => {
-        console.log(tracks);
+   _getToken().then(token => {
+        fetchTracks().then(tracks => {
+            console.log(tracks);
+        })
     })
 }
 
