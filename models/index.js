@@ -11,13 +11,4 @@ Playlist.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-// Playlist.hasOne(Songlist,{
-//   foreignKey: "playlist_id",
-//   onDelete: 'CASCADE',
-// });
-
-// Songlist.belongsTo(Playlist,{
-//   foreignKey: "playlist_id"
-// });
-
 module.exports = { User, Playlist, Songlist };
