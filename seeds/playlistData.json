@@ -1,6 +1,5 @@
-[
   {
-    "id" : 1,
+    "user_id": 1,
     "name" : "Metal Playlist",
     "genre" : "Metal",
     "track_list": [
@@ -22,7 +21,6 @@
         "artist": "As I Lay Dying",
         "duration": "3:30"
       }
-    ],
-    "user_id" : 1 
+    ]
+    
   }
-]
