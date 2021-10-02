@@ -11,7 +11,30 @@ const durationPlaylist = $(`.playlistDuration`);
 const generateBtn = $(`.submitBtn`);
 promptForm.hide();
 
+// Custom Track Details
+const trackItems = [];
+
+// Custom Track Object
+class Track {
+    constructor(name,duration,artist,id,href,album,external_urls) {
+        this.name = name;
+        this.duration = duration;
+        this.artist = artist;
+        this.id = id;
+        this.href = href;
+        this.album = album;
+        this.external_urls = external_urls;
+    }
+
+    logInfo() {
+        Object.values(this).forEach(value => {
+            console.log(value);
+        })
+    }
+}
+
 // Spotify Token
+let token = ``;
 const clientId = '8f62dc31962f42fabe1974961a756d45';
 const clientSecret = 'ca84a1572ec940789947e1428e236a11';
 
@@ -30,6 +53,8 @@ const _getToken = async () => {
     token = data.access_token;
     return data.access_token;
 };
+
+_getToken();
 
 // Prompt form when user clicks generateButton
 generateButton.on(`click`, event => {
@@ -69,16 +94,18 @@ function generatePlaylist(title,duration) {
     let durationInS = duration * 60;
     let durationInMs = durationInS * 1000;
 
-    console.log(`The duration of the playlist is ${duration} minutes or ${durationInMs} milliseconds.`);
+    console.log(`The duration of the ${title} playlist is ${duration} minutes or ${durationInMs} milliseconds.`);
 
-   _getToken().then(token => {
-        fetchTracks().then(tracks => {
-            tracks.items.forEach(track => {
-                console.log(track);
-                console.log(track.track.name);
-            })
+    fetchTracks().then(tracks => {
+        tracks.items.forEach(track => {
+            const {track: {name, duration_ms, artists, id, href, album, external_urls}} = track;
+            const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls);
+            trackItems.push(newTrack);
         })
+        console.log(trackItems);
     })
+
+    return trackItems;
 }
 
 async function fetchTracks() {
