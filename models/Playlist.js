@@ -16,6 +16,10 @@ Playlist.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    genre: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     track_list: {
       type: DataTypes.JSON,
       allowNull: false,
@@ -26,7 +30,7 @@ Playlist.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'playlist',
   }
 );
 
