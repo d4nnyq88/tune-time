@@ -8,6 +8,7 @@ const promptForm = $(`.promptForm`);
 const closeBtn = $(`.closeBtn`);
 const titlePlaylist = $(`.playlistTitle`);
 const durationPlaylist = $(`.playlistDuration`);
+const userPlaylist = $(`.userPlaylist`);
 
 const minMinutes = 10;
 const maxMinutes = 120;
@@ -125,10 +126,23 @@ function generatePlaylist(title,duration) {
                 userList.push(shuffledMasterList[i]);
             }
         }
+        userPlaylist.html(``);
         console.log(userList);
         const durationMinutes = Math.floor(moment.duration(totalDuration).asMinutes());
         console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
         console.log(`The User Playlist is ${durationMinutes} minutes long.`);
+
+        userList.forEach(track => {
+            const trackID = track.id;
+
+            const trackElement = $(`
+            <div class="trackElement">
+                <iframe src="https://open.spotify.com/embed/track/${trackID}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+            `);
+
+            userPlaylist.append(trackElement);
+        })
     })
 }
 
@@ -141,18 +155,15 @@ async function fetchTracks() {
         `37i9dQZEVXbLiRSasKsNU9` // Viral 50
     ];
 
-    var x = Math.floor(Math.random() * playlistsToFetch.length);
-    // var randomPlaylistID = playlistsToFetch[x];
-    var randomPlaylistID = playlistsToFetch[0];
+    const shuffledIDs = [...playlistsToFetch];
 
-    const response = await fetch(`https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?offset=0&limit=50`, {
+    const shuffledMasterIDs = shuffleArray(shuffledIDs);
+    var randomPlaylistID = shuffledMasterIDs[0];
+
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${randomPlaylistID}/tracks?offset=0&limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
-    // const response = await fetch(`https://api.spotify.com/v1/playlists/${randomPlaylistID}/tracks?offset=0&limit=50`, {
-    //     method: 'GET',
-    //     headers: { 'Authorization' : 'Bearer ' + token}
-    // });
     const tracks = await response.json();
     return tracks;
 }
