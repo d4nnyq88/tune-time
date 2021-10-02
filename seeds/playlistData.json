@@ -1,0 +1,28 @@
+[
+  {
+    "id" : 1,
+    "name" : "Metal Playlist",
+    "genre" : "Metal",
+    "track_list": [
+      { 
+        "title": "Never Gonna Learn",
+        "album": "See What's On The Inside",
+        "artist": "Asking Alexandria",
+        "duration": "3:30"
+      },
+      {
+        "title": "Shotgun Blues",
+        "album": "Shotgun Blues",
+        "artist": "Volbeat",
+        "duration": "4:46"
+      },
+      {
+        "title": "Roots Below",
+        "album": "Roots Below",
+        "artist": "As I Lay Dying",
+        "duration": "3:30"
+      }
+    ],
+    "user_id" : 1 
+  }
+]
