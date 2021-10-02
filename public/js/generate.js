@@ -8,6 +8,10 @@ const promptForm = $(`.promptForm`);
 const closeBtn = $(`.closeBtn`);
 const titlePlaylist = $(`.playlistTitle`);
 const durationPlaylist = $(`.playlistDuration`);
+
+const minMinutes = 10;
+const maxMinutes = 120;
+
 const generateBtn = $(`.submitBtn`);
 promptForm.hide();
 
@@ -65,7 +69,7 @@ function promptFormShow() {
     generateBtn.on(`click`, event => {
         event.preventDefault();
 
-        if (titlePlaylist.val() === `` || durationPlaylist.val() === `` || isNaN(durationPlaylist.val()) || durationPlaylist.val() < 15 || durationPlaylist.val() >= 30) {
+        if (titlePlaylist.val() === `` || durationPlaylist.val() === `` || isNaN(durationPlaylist.val()) || durationPlaylist.val() < minMinutes || durationPlaylist.val() >= maxMinutes) {
             alert(`Please enter valid inputs into the fields.`)
             return;
         }
@@ -85,7 +89,7 @@ function promptFormShow() {
 
 function promptFormHide() {
     promptForm.hide(1000);
-}
+} 
 
 function generatePlaylist(title,duration) {
     // Custom Track Details
@@ -107,14 +111,18 @@ function generatePlaylist(title,duration) {
         console.log(`The Master Playlist is: `);
         console.log(trackItems);
 
-        for (var i = 0; i < trackItems.length; i++) {
-            let durationInMilliseconds = trackItems[i].duration;
+        const shuffledTracks = [...trackItems];
+
+        const shuffledMasterList = shuffleArray(shuffledTracks);
+
+        for (var i = 0; i < shuffledMasterList.length; i++) {
+            let durationInMilliseconds = shuffledMasterList[i].duration;
             totalDuration += durationInMilliseconds;
 
             if (totalDuration >= durationInMs) {
                 break;
             } else {
-                userList.push(trackItems[i]);
+                userList.push(shuffledMasterList[i]);
             }
         }
         console.log(userList);
@@ -122,7 +130,6 @@ function generatePlaylist(title,duration) {
         console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
         console.log(`The User Playlist is ${durationMinutes} minutes long.`);
     })
-    return trackItems;
 }
 
 async function fetchTracks() {
@@ -134,13 +141,36 @@ async function fetchTracks() {
         `37i9dQZEVXbLiRSasKsNU9` // Viral 50
     ];
 
-    var x = Math.floor(Math.random() * playlistsToFetch.length) + 1;
-    var randomPlaylistID = playlistsToFetch[x];
+    var x = Math.floor(Math.random() * playlistsToFetch.length);
+    // var randomPlaylistID = playlistsToFetch[x];
+    var randomPlaylistID = playlistsToFetch[0];
 
-    const response = await fetch(`https://api.spotify.com/v1/playlists/${randomPlaylistID}/tracks?offset=0&limit=50`, {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?offset=0&limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
+    // const response = await fetch(`https://api.spotify.com/v1/playlists/${randomPlaylistID}/tracks?offset=0&limit=50`, {
+    //     method: 'GET',
+    //     headers: { 'Authorization' : 'Bearer ' + token}
+    // });
     const tracks = await response.json();
     return tracks;
 }
+
+function shuffleArray(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  } 

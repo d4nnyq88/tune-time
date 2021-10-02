@@ -177,6 +177,8 @@ span.psw {
 .promptForm form button {
   border-radius: 10px;
   margin: 2em 0;
+  font-size: 1.25em;
+  font-weight: 700;
 }
 
 .promptForm form h1 {
@@ -186,10 +188,11 @@ span.psw {
 }
 
 .promptForm form h2 {
-  color: #51e415;
+  color: #04aa6d;
 }
 
 .closeBtn {
+  color: #04aa6d;
   cursor: pointer;
 }
 
