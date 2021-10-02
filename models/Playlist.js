@@ -16,6 +16,10 @@ Playlist.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    track_list: {
+      type: DataTypes.JSON,
+      allowNull: false,
+    }
   },
   {
   sequelize,
