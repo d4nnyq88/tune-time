@@ -73,13 +73,16 @@ function generatePlaylist(title,duration) {
 
    _getToken().then(token => {
         fetchTracks().then(tracks => {
-            console.log(tracks);
+            tracks.items.forEach(track => {
+                console.log(track);
+                console.log(track.track.name);
+            })
         })
     })
 }
 
 async function fetchTracks() {
-    const response = await fetch(`https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?offset=0&limit=30`, {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?offset=0&limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
