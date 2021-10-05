@@ -9,6 +9,7 @@ const playlistPromptForm = $(`.playlistPromptForm`);
 const closeBtn = $(`.closeBtn`);
 const titlePlaylist = $(`.playlistTitle`);
 const durationPlaylist = $(`.playlistDuration`);
+const genrePlaylist = $(`.genres`);
 const userPlaylist = $(`.userPlaylist`);
 const modalTitle = $(`.hinner`);
 
@@ -20,6 +21,16 @@ promptForm.hide();
 userPlaylist.hide();
 
 const userPlaylists = [];
+let genreID = ``;
+
+// function genreSwitch(genre) {
+//     genre = genreP;
+//     switch(genre) {
+//         case `Random`:
+//         return genreID = ``; 
+//     }
+//     return genreID;
+// }
 
 // Custom Playlist Object
 class Playlist {
@@ -39,7 +50,7 @@ class Playlist {
 
 // Custom Track Object
 class Track {
-    constructor(name,duration,artist,id,href,album,external_urls) {
+    constructor(name,duration,artist,id,href,album,external_urls,releaseDate) {
         this.name = name;
         this.duration = duration;
         this.artist = artist;
@@ -47,6 +58,7 @@ class Track {
         this.href = href;
         this.album = album;
         this.external_urls = external_urls;
+        this.releaseDate = releaseDate;
     }
 
     logInfo() {
@@ -98,11 +110,11 @@ function promptFormShow() {
 
         let titleP = titlePlaylist.val();
         let durationP = durationPlaylist.val();
+        let genreP = genrePlaylist.val();
 
-        modalTitle.html(titleP);
+        console.log(`${titleP}: (Your New Playlist) - (${durationP} minutes) from the genre: ${genreP}`);
 
-        console.log(`${titleP}: (Your New Playlist) - (${durationP} minutes)`);
-
+        // generatePlaylist(titleP,durationP,genreP);
         generatePlaylist(titleP,durationP);
         playlistPromptForm.hide(1000);
     })
@@ -131,7 +143,8 @@ function generatePlaylist(title,duration) {
     fetchTracks().then(tracks => {
         tracks.items.forEach(track => {
             const {track: {name, duration_ms, artists, id, href, album, external_urls}} = track;
-            const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls);
+            const release_date = track.track.album.release_date;
+            const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls, release_date);
             trackItems.push(newTrack);
         })
         console.log(`The Master Playlist is: `);
@@ -156,6 +169,8 @@ function generatePlaylist(title,duration) {
         const durationMinutes = Math.floor(moment.duration(totalDuration).asMinutes());
         console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
         console.log(`The User Playlist is ${durationMinutes} minutes long.`);
+
+        modalTitle.html(`${title} - ${durationMinutes} minutes long`);
 
         const newPlaylist = new Playlist(modalTitle.html(),totalDuration,durationMinutes,userList);
         userPlaylists.push(newPlaylist);
