@@ -87,7 +87,7 @@ form {
   border: 3px solid #f1f1f1;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -154,6 +154,17 @@ span.psw {
   padding-top: 16px;
 }
 
+.userPlaylist {
+  width: 50%;
+  margin: 4em auto;
+  overflow: auto;
+  height: 700px;
+}
+
+.userPlaylist::-webkit-scrollbar {
+  opacity: 0.6;
+}
+
 .promptForm {
   position: fixed;
   top: 0;
@@ -165,6 +176,22 @@ span.psw {
   backdrop-filter: blur(3px);
   flex-direction: column;
   /* transition: 150ms ease-in-out; */
+}
+
+.formHeader {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.formHeader h1 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #fff;
+  border-bottom: groove 6px #04aa6d;
+  padding-bottom: .5em;
+  margin: 3em auto -1em;
 }
 
 .promptForm form {
@@ -181,12 +208,6 @@ span.psw {
   margin: 2em 0;
   font-size: 1.25em;
   font-weight: 700;
-}
-
-.promptForm form h1 {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
 }
 
 .promptForm form h2 {

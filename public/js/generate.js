@@ -5,16 +5,37 @@ console.log(`Generating Playlist!`);
 const body = $(`body`);
 const generateButton = $(`.generateButton`);
 const promptForm = $(`.promptForm`);
+const playlistPromptForm = $(`.playlistPromptForm`);
 const closeBtn = $(`.closeBtn`);
 const titlePlaylist = $(`.playlistTitle`);
 const durationPlaylist = $(`.playlistDuration`);
 const userPlaylist = $(`.userPlaylist`);
+const modalTitle = $(`.hinner`);
 
 const minMinutes = 10;
 const maxMinutes = 120;
 
 const generateBtn = $(`.submitBtn`);
 promptForm.hide();
+userPlaylist.hide();
+
+const userPlaylists = [];
+
+// Custom Playlist Object
+class Playlist {
+    constructor(name,duration,durationMinutes,trackList) {
+        this.name = name;
+        this.duration = duration;
+        this.durationMinutes = durationMinutes;
+        this.trackList = trackList;
+    }
+
+    logInfo() {
+        Object.values(this).forEach(value => {
+            console.log(value);
+        })
+    }
+}
 
 // Custom Track Object
 class Track {
@@ -78,9 +99,12 @@ function promptFormShow() {
         let titleP = titlePlaylist.val();
         let durationP = durationPlaylist.val();
 
+        modalTitle.html(titleP);
+
         console.log(`${titleP}: (Your New Playlist) - (${durationP} minutes)`);
 
         generatePlaylist(titleP,durationP);
+        playlistPromptForm.hide(1000);
     })
 
     closeBtn.on(`click`, event => {
@@ -98,6 +122,7 @@ function generatePlaylist(title,duration) {
     let totalDuration = 0;
     let durationInS = duration * 60;
     let durationInMs = durationInS * 1000;
+    userPlaylist.show(1000);
 
     let userList = [];
 
@@ -131,6 +156,11 @@ function generatePlaylist(title,duration) {
         const durationMinutes = Math.floor(moment.duration(totalDuration).asMinutes());
         console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
         console.log(`The User Playlist is ${durationMinutes} minutes long.`);
+
+        const newPlaylist = new Playlist(modalTitle.html(),totalDuration,durationMinutes,userList);
+        userPlaylists.push(newPlaylist);
+        console.log(`User Playlist Is: `);
+        console.log(userPlaylists);
 
         userList.forEach(track => {
             const trackID = track.id;
