@@ -1,4 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist View</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    
 <div class="flex-container">
 
     <div class="logo">
@@ -47,27 +57,18 @@
     </div>
 
     <div class="promptForm" id="promptForm">
-        <div class="formHeader"><h1><div class="hinner">Generate New Playlist Form</div> <span class="closeBtn">X</span></h1></div>
         <form action="" class="playlistPromptForm">
+            <h1>Generate New Playlist Form <span class="closeBtn">X</span></h1>
             <h2>Title of the New Playlist</h2>
             <input name="playlistTitle" class="playlistTitle" type="text" placeholder="Title of the New Playlist">
             <h2>Duration of the New Playlist</h2>
-            <input name="playlistDuration" class="playlistDuration" type="text" placeholder="Duration of the New Playlist... Please enter a number between 10 - 120 minutes">
-            <h2>Genre to Sample</h2>
-            <select class="genres" data-placeholder="Choose a Genre...">
-                <option value="Choose">Choose a Genre...</option>
-                <option value="Random">Random</option>
-                <option value="Rap">Rap</option>
-                <option value="Rock">Rock</option>
-                <option value="R&B">R&B</option>
-                <option value="Country">Country</option>
-            </select>
+            <input name="playlistDuration" class="playlistDuration" type="text" placeholder="Duration of the New Playlist... Please enter a number between 15 - 30 minutes">
             <button class="submitBtn" type="submit">Generate Playlist</button>
         </form>
-        <div class="userPlaylist">
-            {{!-- Custom User Playlist will go here --}}
-        </div>
     </div>
 
 </div>
 
+
+</body>
+</html>
