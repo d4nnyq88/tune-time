@@ -184,49 +184,6 @@ function generatePlaylist(title,duration,genre) {
         let newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList, genre);
         userPlaylists.push(newPlaylist);
         localStorage.setItem("newPlaylist",newPlaylist);
-        // ----------------------------------\\
-              
-        // saveButton.addEventListener('click', async (event) => {
-        //   console.log(newPlaylist);
-        //   console.log('button clicked');
-          
-        //   const name = newPlaylist.title;
-        //   const genre = newPlaylist.genre;
-        //   const track_list = newPlaylist.userList;
-        //   const reqDur = newPlaylist.durationMinutes;
-        //   const realDur = newPlaylist.totalDuration;
-         
-        //   console.log(name);
-        //   console.log(genre);
-        //   console.log(track_list);
-        //   console.log(reqDur);
-        //   console.log(realDur);
-         
-           
-        //   const response = await fetch(`/api/playlist/`, {
-        //       method: 'POST',
-        //       body: JSON.stringify({ name, genre,track_list,reqDur,realDur }),
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-              
-        //     });
-            
-        //     const data = await response.json();
-
-        //     console.log(response);
-        //     console.log("data: ",data);
-        //     console.log(typeof data);
-
-        //     if (response.ok) {
-        //       document.location.replace('/');
-        //     } else {
-        //       alert('Failed to create project');
-        //       return;
-        //     }
-          
-        // });
-        // ---------------------------------------\\
         console.log(`User Playlist Is: `);
         console.log(userPlaylists);
         saveInfo = userPlaylists;
@@ -249,8 +206,7 @@ function generatePlaylist(title,duration,genre) {
         
       })
       buttonsRow.show(1000);
-      // module.exports = {title, genre, userPlaylists, duration, totalDuration};
-      // return newPlaylist;
+      
     }
     
     saveButton.addEventListener('click', async (event) => {
@@ -294,32 +250,6 @@ function generatePlaylist(title,duration,genre) {
         
       });   
 
-
-// saveButtonHandler = async (newPlaylist) => {
-  
-//   const name = newPlaylist.title;
-//   const genre = newPlaylist.genre;
-//   const track_list = newPlaylist.userList;
-//   const reqDur = newPlaylist.durationMinutes;
-//   const realDur = playlistInfo.totalDuration;
-
-
-//   if (tracklist) {
-//     const response = await fetch(`/api/playlist/`, {
-//       method: 'POST',
-//       body: JSON.stringify({ name, genre,track_list,reqDur,realDur }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/');
-//     } else {
-//       alert('Failed to create project');
-//     }
-//   }
-// };
 
 async function fetchTracks() {
 
