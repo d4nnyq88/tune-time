@@ -13,11 +13,14 @@ const genrePlaylist = $(`.genres`);
 const userPlaylist = $(`.userPlaylist`);
 const buttonsRow = $(`.buttonsRow`);
 const modalTitle = $(`.hinner`);
-const saveButton = $(`#save`);
+// const saveButton = $(`#save`);
+const saveButton = document.querySelector(`#save`);
 const generateNewButton = $(`#generateNew`);
 
 const minMinutes = 10;
 const maxMinutes = 120;
+
+let saveInfo = {};
 
 const generateBtn = $(`.submitBtn`);
 promptForm.hide();
@@ -178,11 +181,55 @@ function generatePlaylist(title,duration,genre) {
 
         modalTitle.html(`${title}<span class="listDetails"> <span class="greenSep">|</span> ${durationMinutes} minutes long <span class="greenSep">|</span> ${userList.length} Track(s).</span>`);
 
-        const newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList, genre);
+        let newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList, genre);
         userPlaylists.push(newPlaylist);
+        localStorage.setItem("newPlaylist",newPlaylist);
+        // ----------------------------------\\
+              
+        // saveButton.addEventListener('click', async (event) => {
+        //   console.log(newPlaylist);
+        //   console.log('button clicked');
+          
+        //   const name = newPlaylist.title;
+        //   const genre = newPlaylist.genre;
+        //   const track_list = newPlaylist.userList;
+        //   const reqDur = newPlaylist.durationMinutes;
+        //   const realDur = newPlaylist.totalDuration;
+         
+        //   console.log(name);
+        //   console.log(genre);
+        //   console.log(track_list);
+        //   console.log(reqDur);
+        //   console.log(realDur);
+         
+           
+        //   const response = await fetch(`/api/playlist/`, {
+        //       method: 'POST',
+        //       body: JSON.stringify({ name, genre,track_list,reqDur,realDur }),
+        //       headers: {
+        //         'Content-Type': 'application/json',
+        //       },
+              
+        //     });
+            
+        //     const data = await response.json();
+
+        //     console.log(response);
+        //     console.log("data: ",data);
+        //     console.log(typeof data);
+
+        //     if (response.ok) {
+        //       document.location.replace('/');
+        //     } else {
+        //       alert('Failed to create project');
+        //       return;
+        //     }
+          
+        // });
+        // ---------------------------------------\\
         console.log(`User Playlist Is: `);
         console.log(userPlaylists);
-
+        saveInfo = userPlaylists;
         userList.forEach((track,index) => {
             const trackID = track.id;
             const durationTrackMinutes = Math.floor(moment.duration(track.duration).asMinutes());
@@ -199,10 +246,80 @@ function generatePlaylist(title,duration,genre) {
 
             userPlaylist.append(trackElement);
         })
-    })
-    buttonsRow.show(1000);
-    // module.exports = {title, genre, userPlaylists, duration, totalDuration};
-}
+        
+      })
+      buttonsRow.show(1000);
+      // module.exports = {title, genre, userPlaylists, duration, totalDuration};
+      // return newPlaylist;
+    }
+    
+    saveButton.addEventListener('click', async (event) => {
+        console.log(saveInfo[0]);
+        console.log('button clicked');
+        
+        const name = saveInfo[0].name;
+        const genre = saveInfo[0].genre;
+        const track_list = saveInfo[0].trackList;
+        const reqDuration = saveInfo[0].durationMinutes;
+        const realDuration = saveInfo[0].duration;
+       
+        console.log(name);
+        console.log(genre);
+        console.log(track_list);
+        console.log(reqDuration);
+        console.log(realDuration);
+       
+         
+        const response = await fetch(`/api/playlist/`, {
+            method: 'POST',
+            body: JSON.stringify({ name, genre,track_list,reqDuration,realDuration }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            
+          });
+          
+          const data = await response.json();
+
+          console.log(response);
+          console.log("data: ",data);
+          console.log(typeof data);
+
+          if (response.ok) {
+            document.location.replace('/dashboard');
+          } else {
+            alert('Failed to create project');
+            return;
+          }
+        
+      });   
+
+
+// saveButtonHandler = async (newPlaylist) => {
+  
+//   const name = newPlaylist.title;
+//   const genre = newPlaylist.genre;
+//   const track_list = newPlaylist.userList;
+//   const reqDur = newPlaylist.durationMinutes;
+//   const realDur = playlistInfo.totalDuration;
+
+
+//   if (tracklist) {
+//     const response = await fetch(`/api/playlist/`, {
+//       method: 'POST',
+//       body: JSON.stringify({ name, genre,track_list,reqDur,realDur }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+
+//     if (response.ok) {
+//       document.location.replace('/');
+//     } else {
+//       alert('Failed to create project');
+//     }
+//   }
+// };
 
 async function fetchTracks() {
 

@@ -6,7 +6,7 @@ router.post('/', async (req, res) => {
   try {
     const newPlaylist = await Playlist.create({
       ...req.body,
-      // user_id: req.session.user_id,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newPlaylist);
@@ -20,7 +20,7 @@ router.delete('/:id', async (req, res) => {
     const playlistData = await Playlist.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
+        user_id: req.session.user_id,
       },
     });
 
