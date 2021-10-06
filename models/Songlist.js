@@ -1,7 +1,7 @@
-// const { Model, DataTypes } = require('sequelize');
-// const sequelize = require('../config/connection');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-// class Songlist extends Model {}
+class Songlist extends Model {}
 
 // Songlist.init(
 //   {
@@ -37,4 +37,4 @@
 //   }
 // );
 
-// module.exports = Songlist;
+module.exports = Songlist;

@@ -23,6 +23,14 @@ Playlist.init(
     track_list: {
       type: DataTypes.JSON,
       allowNull: false,
+    },
+    reqDuration: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    realDuration:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
     }
   },
   {
