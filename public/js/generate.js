@@ -30,11 +30,12 @@ let genreX = ``;
 
 // Custom Playlist Object
 class Playlist {
-    constructor(name,duration,durationMinutes,trackList) {
+    constructor(name,duration,durationMinutes,trackList,genre) {
         this.name = name;
         this.duration = duration;
         this.durationMinutes = durationMinutes;
         this.trackList = trackList;
+        this.genre = genre;
     }
 
     logInfo() {
@@ -177,7 +178,7 @@ function generatePlaylist(title,duration,genre) {
 
         modalTitle.html(`${title}<span class="listDetails"> <span class="greenSep">|</span> ${durationMinutes} minutes long <span class="greenSep">|</span> ${userList.length} Track(s).</span>`);
 
-        const newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList);
+        const newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList, genre);
         userPlaylists.push(newPlaylist);
         console.log(`User Playlist Is: `);
         console.log(userPlaylists);
@@ -200,7 +201,7 @@ function generatePlaylist(title,duration,genre) {
         })
     })
     buttonsRow.show(1000);
-    module.exports = {title, genre, userPlaylists, duration, totalDuration};
+    // module.exports = {title, genre, userPlaylists, duration, totalDuration};
 }
 
 async function fetchTracks() {
