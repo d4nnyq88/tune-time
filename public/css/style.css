@@ -158,11 +158,81 @@ span.psw {
   width: 50%;
   margin: 4em auto;
   overflow: auto;
-  height: 700px;
+  height: 530px;
+}
+
+.trackDetails {
+  color: #fff;
+  padding: .5em 1em;
+  display: flex;
+  grid-gap: 1em;
+}
+
+.trackDetails a {
+  color: #04aa6d;
+  text-decoration: none;
+  padding-right: .3em;
+}
+
+.greenSep {
+  color: #04aa6d;
+}
+
+.buttonsRow button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 800;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonsRow i {
+  font-size: 1.2em;
+  margin: 0 .5em;
+}
+
+.listDetails {
+  font-weight: 300;
+  font-size: .7em;
+  color: #d1d1d1;
+}
+
+#generateNew {
+  background-color: #333;
 }
 
 .userPlaylist::-webkit-scrollbar {
-  opacity: 0.6;
+  background: #04AA6D;
+}
+
+.userPlaylist::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  transition: 150ms ease-in-out;
+}
+
+.userPlaylist::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  transition: 150ms ease-in-out;
+}
+
+.buttonsRow {
+  display: flex;
+  width: 50%;
+  grid-gap: 1em;
+  margin: -2em auto;
+}
+
+.trackDetails {
+  color: #fff;
+  padding: .5em 1em;
 }
 
 .promptForm {

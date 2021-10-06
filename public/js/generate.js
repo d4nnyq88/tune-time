@@ -11,7 +11,10 @@ const titlePlaylist = $(`.playlistTitle`);
 const durationPlaylist = $(`.playlistDuration`);
 const genrePlaylist = $(`.genres`);
 const userPlaylist = $(`.userPlaylist`);
+const buttonsRow = $(`.buttonsRow`);
 const modalTitle = $(`.hinner`);
+const saveButton = $(`#save`);
+const generateNewButton = $(`#generateNew`);
 
 const minMinutes = 10;
 const maxMinutes = 120;
@@ -19,18 +22,11 @@ const maxMinutes = 120;
 const generateBtn = $(`.submitBtn`);
 promptForm.hide();
 userPlaylist.hide();
+buttonsRow.hide();
 
 const userPlaylists = [];
 let genreID = ``;
-
-// function genreSwitch(genre) {
-//     genre = genreP;
-//     switch(genre) {
-//         case `Random`:
-//         return genreID = ``; 
-//     }
-//     return genreID;
-// }
+let genreX = ``;
 
 // Custom Playlist Object
 class Playlist {
@@ -112,10 +108,10 @@ function promptFormShow() {
         let durationP = durationPlaylist.val();
         let genreP = genrePlaylist.val();
 
-        console.log(`${titleP}: (Your New Playlist) - (${durationP} minutes) from the genre: ${genreP}`);
+        // console.log(`${titleP}: (Your New Playlist) - (${durationP} minutes) from the genre: ${genreP}`);
 
-        // generatePlaylist(titleP,durationP,genreP);
-        generatePlaylist(titleP,durationP);
+        generatePlaylist(titleP,durationP,genreP);
+        // generatePlaylist(titleP,durationP);
         playlistPromptForm.hide(1000);
     })
 
@@ -126,9 +122,17 @@ function promptFormShow() {
 
 function promptFormHide() {
     promptForm.hide(1000);
-} 
+}
 
-function generatePlaylist(title,duration) {
+generateNewButton.on(`click`,event => {
+    userPlaylist.hide(1000);
+    buttonsRow.hide(1000);
+    modalTitle.html(`Generate New Playlist Form`);
+    playlistPromptForm.show(1000);
+})
+
+function generatePlaylist(title,duration,genre) {
+
     // Custom Track Details
     const trackItems = [];
     let totalDuration = 0;
@@ -138,7 +142,8 @@ function generatePlaylist(title,duration) {
 
     let userList = [];
 
-    console.log(`The duration of the ${title} playlist is ${duration} minutes or ${durationInMs} milliseconds.`);
+    // console.log(`The duration of the ${title} playlist is ${duration} minutes or ${durationInMs} milliseconds from the ${genre} Genre.`);
+    genreX = genre;
 
     fetchTracks().then(tracks => {
         tracks.items.forEach(track => {
@@ -147,8 +152,8 @@ function generatePlaylist(title,duration) {
             const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls, release_date);
             trackItems.push(newTrack);
         })
-        console.log(`The Master Playlist is: `);
-        console.log(trackItems);
+        // console.log(`The Master Playlist is: `);
+        // console.log(trackItems);
 
         const shuffledTracks = [...trackItems];
 
@@ -165,30 +170,37 @@ function generatePlaylist(title,duration) {
             }
         }
         userPlaylist.html(``);
-        console.log(userList);
+        // console.log(userList);
         const durationMinutes = Math.floor(moment.duration(totalDuration).asMinutes());
-        console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
-        console.log(`The User Playlist is ${durationMinutes} minutes long.`);
+        // console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
+        // console.log(`The User Playlist is ${durationMinutes} minutes long.`);
 
-        modalTitle.html(`${title} - ${durationMinutes} minutes long`);
+        modalTitle.html(`${title}<span class="listDetails"> <span class="greenSep">|</span> ${durationMinutes} minutes long <span class="greenSep">|</span> ${userList.length} Track(s).</span>`);
 
-        const newPlaylist = new Playlist(modalTitle.html(),totalDuration,durationMinutes,userList);
+        const newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList);
         userPlaylists.push(newPlaylist);
         console.log(`User Playlist Is: `);
         console.log(userPlaylists);
 
-        userList.forEach(track => {
+        userList.forEach((track,index) => {
             const trackID = track.id;
+            const durationTrackMinutes = Math.floor(moment.duration(track.duration).asMinutes());
 
             const trackElement = $(`
             <div class="trackElement">
                 <iframe src="https://open.spotify.com/embed/track/${trackID}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                <div class="trackDetails">
+                    ${index}.
+                    <marquee><a href="/">${track.name}</a> by ${track.artist} <span class="greenSep">|</span> ${durationTrackMinutes} Minute(s) <span class="greenSep">|</span> Published on ${track.releaseDate}</marquee>
+                </div>
             </div>
             `);
 
             userPlaylist.append(trackElement);
         })
     })
+    buttonsRow.show(1000);
+    module.exports = {title, genre, userPlaylists, duration, totalDuration};
 }
 
 async function fetchTracks() {
@@ -205,7 +217,26 @@ async function fetchTracks() {
     const shuffledMasterIDs = shuffleArray(shuffledIDs);
     var randomPlaylistID = shuffledMasterIDs[0];
 
-    const response = await fetch(`https://api.spotify.com/v1/playlists/${randomPlaylistID}/tracks?offset=0&limit=50`, {
+    function genreSwitch(genre) {
+        genre = genreX;
+        switch(genre) {
+            case `Random`:
+            return genreID = randomPlaylistID;
+            case `Rap`:
+            return genreID = `37i9dQZF1DX0XUsuxWHRQd`;
+            case `Pop`:
+            return genreID = `37i9dQZF1DXarRysLJmuju`;
+            // case `Rock`:
+            // return genreID = `37i9dQZF1DXcF6B6QPhFDv`;
+            case `R&B`:
+            return genreID = `37i9dQZF1DX4SBhb3fqCJd`;
+            case `Country`:
+            return genreID = `37i9dQZF1DX1lVhptIYRda`;
+        }
+        return genreID;
+    }
+
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${genreSwitch()}/tracks?offset=0&limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
