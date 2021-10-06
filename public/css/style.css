@@ -31,7 +31,7 @@ header {
 .registration {
   width: 25%;
   display: flex;
-  grid-gap: 1em;
+  grid-gap: 1.1em;
   justify-content: flex-end;
   padding: 0 2em;
 }
