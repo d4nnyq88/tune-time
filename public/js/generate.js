@@ -27,7 +27,7 @@ promptForm.hide();
 userPlaylist.hide();
 buttonsRow.hide();
 
-const userPlaylists = [];
+// const userPlaylists = [];
 let genreID = ``;
 let genreX = ``;
 
@@ -145,7 +145,7 @@ function generatePlaylist(title,duration,genre) {
     userPlaylist.show(1000);
 
     let userList = [];
-
+    let userPlaylists=[];
     // console.log(`The duration of the ${title} playlist is ${duration} minutes or ${durationInMs} milliseconds from the ${genre} Genre.`);
     genreX = genre;
 
@@ -195,7 +195,7 @@ function generatePlaylist(title,duration,genre) {
             <div class="trackElement">
                 <iframe src="https://open.spotify.com/embed/track/${trackID}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 <div class="trackDetails">
-                    ${index}.
+                    ${index+1}.
                     <marquee><a href="/">${track.name}</a> by ${track.artist} <span class="greenSep">|</span> ${durationTrackMinutes} Minute(s) <span class="greenSep">|</span> Published on ${track.releaseDate}</marquee>
                 </div>
             </div>
