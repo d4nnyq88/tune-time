@@ -58,7 +58,8 @@
                 <option value="Choose">Choose a Genre...</option>
                 <option value="Random">Random</option>
                 <option value="Rap">Rap</option>
-                <option value="Rock">Rock</option>
+                <option value="Pop">Pop</option>
+                {{!-- <option value="Rock">Rock</option> --}}
                 <option value="R&B">R&B</option>
                 <option value="Country">Country</option>
             </select>
@@ -66,6 +67,10 @@
         </form>
         <div class="userPlaylist">
             {{!-- Custom User Playlist will go here --}}
+        </div>
+        <div class="buttonsRow">
+            <button id="save"><i class="fas fa-save"></i> Save this Playlist</button>
+            <button id="generateNew"><i class="fas fa-undo"></i> Generate New Playlist</button>
         </div>
     </div>
 
