@@ -200,6 +200,7 @@ function generatePlaylist(title,duration,genre) {
         })
     })
     buttonsRow.show(1000);
+    module.exports = {title, genre, userPlaylists, duration, totalDuration};
 }
 
 async function fetchTracks() {
