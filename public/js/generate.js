@@ -20,7 +20,7 @@ const generateNewButton = $(`#generateNew`);
 const minMinutes = 10;
 const maxMinutes = 120;
 
-let saveInfo = {};
+let saveInfo = [];
 
 const generateBtn = $(`.submitBtn`);
 promptForm.hide();
@@ -310,3 +310,6 @@ function shuffleArray(array) {
     return array;
 }  
     
+// module.exports = {
+//   saveInfo,
+// };

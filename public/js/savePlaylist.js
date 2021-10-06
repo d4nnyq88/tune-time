@@ -1,19 +1,18 @@
-const playlistInfo = require('./generate.js')
+const saveInfo = require('/generate.js')
 
 const saveButtonHandler = async (event) => {
   event.preventDefault();
-
-  const name = playlistInfo.title;
-  const genre = "random"
-  const track_list = playlistInfo.tracks;
-  const reqDur = 20000;
-  const realDur = playlistInfo.totalDuration;
-
+  console.log('save button clicked')
+  const name = saveInfo[0].name;
+  const genre = saveInfo[0].genre;
+  const track_list = saveInfo[0].trackList;
+  const reqDuration = saveInfo[0].durationMinutes;
+  const realDuration = saveInfo[0].duration;
 
   if (tracklist) {
     const response = await fetch(`/api/playlist/`, {
       method: 'POST',
-      body: JSON.stringify({ name, genre,track_list,reqDur,realDur }),
+      body: JSON.stringify({ name, genre,track_list,reqDuration,realDuration }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -27,6 +26,6 @@ const saveButtonHandler = async (event) => {
   }
 };
 
-document
-  .querySelector('.save_playlist')
-  .addEventListener('click', saveButtonHandler);
+const saveBtnClick=document.querySelector('#save');
+  
+saveBtnClick.addEventListener('click', saveButtonHandler());
