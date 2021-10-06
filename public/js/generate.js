@@ -189,7 +189,8 @@ function generatePlaylist(title,duration) {
             userPlaylist.append(trackElement);
         })
     })
-}
+    module.exports={title,userPlaylists,totalDuration,}
+  }
 
 async function fetchTracks() {
 
@@ -229,4 +230,5 @@ function shuffleArray(array) {
     }
   
     return array;
-  } 
+}  
+    

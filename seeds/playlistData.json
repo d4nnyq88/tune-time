@@ -21,6 +21,7 @@
         "artist": "As I Lay Dying",
         "duration": "3:30"
       }
-    ]
-    
+    ],
+    "reqDuration": 20000,
+    "realDuration": 22000    
   }
