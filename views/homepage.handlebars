@@ -1,1 +1,62 @@
-<h1>Tune Time</h1>
+<div class="flex-container">
+    <div class="pageBanner">
+        <h1 class="pageLocation">Homepage<span class="ifSignedIn"></span></h1>
+        <span class="ifSignedIn">- Not Signed In</span>
+    </div>
+    <div class="flexCont">
+        <div class="recentPlaylist">
+            <h1>Recent Playlist</h1>
+                <ul>
+                    <li><a href="#">Walk The Dog</a></li>
+                    <li><a href="#">NSFW</a></li>
+                    <li><a href="#">Long Commute</a></li>
+                    <li><a href="#">Short Commute</a></li>
+                </ul>
+        </div>
+    <div class="currentPlaylist">
+        <div class="title-duration-genre">
+            <h1 class="playlist-name">Walk The Dog</h1>
+            <h2 class="duration">10min</h2>
+            <h2 class="genre">Hip-Hop</h2>
+        </div>
+        <ol class="track-list">
+            <li>Lil Wayne- She Will ft.Drake</li>
+            <li>J.cole- Pride is The Devil ft.Lil Baby</li>
+            <li>Dababy- BOP</li>
+            <li>lil Baby- sum 2 Prove</li>
+        </ol>
+    </div>
+</div>
+<div class="buttonContainer">
+    <button class="generateButton">Generate New Playlist</button>
+</div>
+
+    <div class="promptForm" id="promptForm">
+        <div class="formHeader"><h1><div class="hinner">Generate New Playlist Form</div> <span class="closeBtn">X</span></h1></div>
+        <form action="" class="playlistPromptForm">
+            <h2>Title of the New Playlist</h2>
+            <input name="playlistTitle" class="playlistTitle" type="text" placeholder="Title of the New Playlist">
+            <h2>Duration of the New Playlist</h2>
+            <input name="playlistDuration" class="playlistDuration" type="text" placeholder="Duration of the New Playlist... Please enter a number between 10 - 120 minutes">
+            <h2>Genre to Sample</h2>
+            <select class="genres" data-placeholder="Choose a Genre...">
+                <option value="Choose">Choose a Genre...</option>
+                <option value="Random">Random</option>
+                <option value="Rap">Rap</option>
+                <option value="Pop">Pop</option>
+                {{!-- <option value="Rock">Rock</option> --}}
+                <option value="R&B">R&B</option>
+                <option value="Country">Country</option>
+            </select>
+            <button class="submitBtn" type="submit">Generate Playlist</button>
+        </form>
+        <div class="userPlaylist">
+            {{!-- Custom User Playlist will go here --}}
+        </div>
+        <div class="buttonsRow">
+            <button id="save"><i class="fas fa-save"></i> Save this Playlist</button>
+            <button id="generateNew"><i class="fas fa-undo"></i> Generate New Playlist</button>
+        </div>
+    </div>
+
+</div>
