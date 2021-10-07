@@ -371,3 +371,7 @@ span.psw {
      width: 100%;
   }
 }
+
+@keyframes hide-scroll {
+  from, to { overflow: hidden; } 
+}
