@@ -1,5 +1,6 @@
 const router = require('express').Router();
-
+const sequelize = require('../config/connection');
+const {User, Playlist} = require('../models');
 router.get('/', async (req, res) => {
     try {
             
@@ -21,8 +22,10 @@ router.get('/login', (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
     try {
-            
-        res.render('dashboard');
+       const playLists = await Playlist.findByPk(user_id = 1);
+       const playlist = playLists.get({ plain: true }); 
+       res.render('dashboard',{playlist});
+       
     } catch (err) {
       res.status(500).json(err);
     }
