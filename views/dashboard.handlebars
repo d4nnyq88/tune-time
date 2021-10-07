@@ -9,16 +9,16 @@
     </div>
     <div class="flexCont">
         <div class="recentPlaylist">
-            <h1>Recent Playlist</h1>
-                <ul>
-                    {{#each playlists as |playlist|}}
-                    <li>{{playlist.name}}</li>
+            <h1 class="borderBottom">Your Saved Playlists</h1>
+                <div class="savedLists">
+                    {{#each playlists as |playlist index|}}
+                    <div class="listItem {{index}}" id="{{playlist.id}}"><span class="index">{{index}}</span>) {{playlist.name}} | <span class="genreDuration">{{playlist.genre}} - <span class="durationMS">{{playlist.realDuration}}</span></span></div>
                     {{/each}}
-                </ul> 
+                </div> 
         </div>
     <div class="currentPlaylist">
         <div class="title-duration-genre">
-            <h1 class="playlist-name">Walk The Dog</h1>
+            <h1 class="playlist-name borderBottom">Walk The Dog</h1>
             <h2 class="duration">10min</h2>
             <h2 class="genre">Hip-Hop</h2>
         </div>

@@ -187,6 +187,36 @@ input[type=text], input[type=password], select {
   font-weight: 500;
 }
 
+.homeLink {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.listItem {
+  font-size: 1.4em;
+  margin: 1em;
+  font-weight: 700;
+}
+
+.borderBottom {
+  border-bottom: solid 3px #333333;
+  padding-bottom: .5em;
+  display: inline-block;
+  margin-bottom: .5em;
+}
+
+.genreDuration {
+  font-size: .7em;
+}
+
 button {
   background-color: #04AA6D;
   color: white;
