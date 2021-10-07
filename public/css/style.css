@@ -107,8 +107,9 @@ header {
   padding: 2em;
 }
 
-.logo {
-    background: #51e415;
+.logo{
+    background-color: #04AA6D;
+    border: 1px solid black;
     height: 10vh;
     text-align: center;
     color:black;
@@ -122,6 +123,7 @@ ul li a {
     color: black;
     font-size: 28px;
     line-height: 45px;
+    cursor: pointer;
     
  }
 
@@ -135,7 +137,8 @@ ul li a {
  }
 
 .current-playlist-container{
-    background-color: #51e415;
+    background-color: #04AA6D;
+    border: 1px solid black;
     width: 100%;
     height: auto;
     margin: 0px;
@@ -145,6 +148,12 @@ ul li a {
 
 form {
   border: 3px solid #f1f1f1;
+  width: 50%;
+  margin: auto;
+}
+
+form h2 {
+  text-align: center;
 }
 
 input[type=text], input[type=password], select {
