@@ -1,5 +1,20 @@
 // Playlist Generator
-console.log(`Generating Playlist!`);
+
+// Alter Playlist Durations // Converting from Milliseconds to Minutes
+const durationMS = document.querySelectorAll(`.durationMS`);
+durationMS.forEach(duration => {
+    let ms = parseInt(duration.innerHTML);
+    let minuteDuration = Math.floor(moment.duration(ms).asMinutes());
+    duration.innerHTML = minuteDuration + ' Min.';
+})
+
+// Alter Playlist Index // Converting Index from starting at 0 to starting at 1
+const indexes = document.querySelectorAll(`.index`);
+console.log(indexes);
+indexes.forEach(index => {
+    let innerIndex = parseInt(index.innerHTML) + 1;
+    index.innerHTML = innerIndex;
+})
 
 // Variables
 const body = $(`body`);
@@ -309,8 +324,4 @@ function shuffleArray(array) {
     }
   
     return array;
-}  
-    
-// module.exports = {
-//   saveInfo,
-// };
+}
