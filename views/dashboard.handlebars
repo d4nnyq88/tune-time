@@ -6,9 +6,11 @@
         <div class="recentPlaylist">
             <h1>Recent Playlist</h1>
                 <ul>
-                  {{!-- {{#each playlist}} --}}
-                  <li>{{playlist.name}}</li>
-                  {{!-- {{/each}} --}}
+                  {{#if playlist.length}}
+                    {{#each playlist as |playlists|}}
+                    <li>{{playlists.name}}</li>
+                    {{/each}}
+                  {{/if}}
                 </ul>
                 {{!-- <ul>
                     <li><a href="#">{{name}}</a></li>

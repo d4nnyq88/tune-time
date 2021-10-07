@@ -19,19 +19,21 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
 
-      //  const playLists = await Playlist.findByPk(user_id = 1);
-      //  const playlist = playLists.get({ plain: true }); 
+       const playLists = await Playlist.findByPk(req.session.user_id);
+       const playlist = playLists.get({ plain: true }); 
       //  res.render('dashboard',{playlist});
        
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
+            include: [{model:Playlist}],
         });
         
         const user = userData.get({ plain: true });
 
         res.render('dashboard', {
-            ...user,
-            logged_in: true
+            user,
+            logged_in: true,
+            playlist
         });
 
     } catch (err) {
