@@ -1,25 +1,49 @@
-<h2>Login Page</h2>
+<h1>Login Page</h1>
 
-<form action="/action_page.php" method="post">
+{{#if logged_in}}
+    <h2>You are already logged in!</h2>
+{{else}}
+<form class="login-form">
+    <h2>Login</h2>
   <div class="imgcontainer">
-    <img src="/public/images/tunetime_img1.jpeg" alt="logo" class="logo">
+    <img src="./images/Tune-Time-Cropped.png" alt="logo" class="logo">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="uname"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" id="email-login"/>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" id="password-login"/>
         
-    <button type="submit">Login Page</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+    <button type="submit">Login</button>   
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+  <div class="container" style="background-color:#f1f1f1">    
   </div>
 </form>
+
+<form class="signup-form">
+  <h2>New User Sign Up</h2>
+  <div class="imgcontainer">
+    <img src="./images/Tune-Time-Cropped.png" alt="logo" class="logo">
+  </div>
+
+  <div class="container">
+    <label for="name-signup"><b>Enter Your Name</b></label>
+    <input type="text" placeholder="Enter your name" id="name-signup"/>
+
+    <label for="uname"><b>Enter New Username</b></label>
+    <input type="text" placeholder="Enter Email" id="email-signup"/>
+
+    <label for="psw"><b>Enter New Password</b></label>
+    <input type="password" placeholder="Create Password" id="password-signup"/>
+
+    <button type="submit">Sign Up!</button>    
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">    
+  </div>
+</form>
+{{/if}}
+<script src="./js/login.js"></script>

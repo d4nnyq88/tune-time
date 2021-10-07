@@ -15,8 +15,13 @@
         <div class="menu">
         <ul>
         <li><a href="./"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="/login">Login</a></li>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
         <li><a href="/dashboard">Dashboard</a></li>
+        <li><a id="logout">Logout</a></li>
+        {{else}}
+        <li><a href="/login">Login</a></li>
+        {{/if}}
       </ul>
     </div>
     </header>
@@ -27,6 +32,10 @@
     <!-- Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="/js/generate.js"></script>
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 </html>
 
