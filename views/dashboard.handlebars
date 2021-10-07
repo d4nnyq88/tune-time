@@ -6,11 +6,16 @@
         <div class="recentPlaylist">
             <h1>Recent Playlist</h1>
                 <ul>
-                    <li><a href="#">Walk The Dog</a></li>
+                  {{!-- {{#each playlist}} --}}
+                  <li>{{playlist.name}}</li>
+                  {{!-- {{/each}} --}}
+                </ul>
+                {{!-- <ul>
+                    <li><a href="#">{{name}}</a></li>
                     <li><a href="#">NSFW</a></li>
                     <li><a href="#">Long Commute</a></li>
                     <li><a href="#">Short Commute</a></li>
-                </ul>
+                </ul> --}}
         </div>
     <div class="currentPlaylist">
         <div class="title-duration-genre">

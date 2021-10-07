@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('../utils/auth');
 
+const sequelize = require('../config/connection');
+const {User, Playlist} = require('../models');
+
+const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
@@ -16,6 +18,11 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
+
+       const playLists = await Playlist.findByPk(user_id = 1);
+       const playlist = playLists.get({ plain: true }); 
+       //res.render('dashboard',{playlist});
+       
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
         });
@@ -25,7 +32,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.render('dashboard', {
             ...user,
             logged_in: true
-        });
+        },{playlist});
+
     } catch (err) {
       res.status(500).json(err);
     }
