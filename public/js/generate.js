@@ -222,6 +222,7 @@ function generatePlaylist(title,duration,genre) {
         console.log(name);
         console.log(genre);
         console.log(track_list);
+        console.log(typeof track_list);
         console.log(reqDuration);
         console.log(realDuration);
        
