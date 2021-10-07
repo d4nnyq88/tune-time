@@ -35,6 +35,12 @@ header {
   justify-content: flex-end;
   padding: 0 2em;
 }
+.playListItem {
+  cursor: pointer;
+}
+.title-duration-genre h2 span {
+  color: #333;
+}
 .pageBanner {
   padding: 1em 2em;
   background: var(--green);
@@ -49,6 +55,10 @@ header {
 .playlists {
   font-size: .7em;
   color: #fff;
+}
+.playListName {
+  color: #333;
+  cursor: pointer;
 }
 .ifSignedIn {
   font-size: 1em;

@@ -10,7 +10,6 @@ durationMS.forEach(duration => {
 
 // Alter Playlist Index // Converting Index from starting at 0 to starting at 1
 const indexes = document.querySelectorAll(`.index`);
-console.log(indexes);
 indexes.forEach(index => {
     let innerIndex = parseInt(index.innerHTML) + 1;
     index.innerHTML = innerIndex;

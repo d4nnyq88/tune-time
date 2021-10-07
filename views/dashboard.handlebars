@@ -12,15 +12,14 @@
             <h1 class="borderBottom">Your Saved Playlists</h1>
                 <div class="savedLists">
                     {{#each playlists as |playlist index|}}
-                    <div class="listItem {{index}}" id="{{playlist.id}}"><span class="index">{{index}}</span>) {{playlist.name}} | <span class="genreDuration">{{playlist.genre}} - <span class="durationMS">{{playlist.realDuration}}</span></span></div>
+                    <div class="listItem playListItem" id="{{index}}"><span class="index">{{index}}</span>) <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span></div>
                     {{/each}}
                 </div> 
         </div>
     <div class="currentPlaylist">
         <div class="title-duration-genre">
-            <h1 class="playlist-name borderBottom">Walk The Dog</h1>
-            <h2 class="duration">10min</h2>
-            <h2 class="genre">Hip-Hop</h2>
+            <h1 class="playlist-name borderBottom">Current Playlist</h1>
+            <h2><span class="nameOfList">Playlist: </span><span class="genreList">Genre - </span><span class="durationList">10 min.</span></h2>
         </div>
         <ol class="track-list">
             <li>Lil Wayne- She Will ft.Drake</li>
@@ -61,5 +60,22 @@
             <button id="generateNew"><i class="fas fa-undo"></i> Generate New Playlist</button>
         </div>
     </div>
-
 </div>
+<script>
+    const playListNames = document.querySelectorAll(`.playListName`);
+    playListNames.forEach(playlist => {
+        playlist.addEventListener(`click`,event => {
+            let nameHTML = document.querySelector(`.nameOfList`);
+            let genreHTML = document.querySelector(`.genreList`);
+            let durationHTML = document.querySelector(`.durationList`);
+
+            let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;
+            let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
+            let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
+
+            nameHTML.innerHTML = playListName + ': ';
+            genreHTML.innerHTML = playListGenre + '- ';
+            durationHTML.innerHTML = playListDuration;
+        })
+    })
+</script>
