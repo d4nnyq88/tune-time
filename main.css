@@ -1,0 +1,232 @@
+element.style {
+}
+
+.block-homepage-cover {
+    overflow: hidden;
+}
+.has-blue-background-color {
+    background-color: #172153;
+    color: #fff;
+}
+body {
+    font-family: Roboto,sans-serif;
+    text-rendering: optimizeSpeed;
+    line-height: normal;
+    color: #454f59;
+    overflow-x: hidden;
+}
+
+body, html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    line-height: 1;
+}
+@media (max-width: 1250px) and (orientation: landscape)
+.block-homepage-cover .wrapper {
+    padding-bottom: 60px;
+}
+
+@media (max-width: 1250px)
+.block-homepage-cover .wrapper {
+    padding-top: 70px;
+}
+.block-homepage-cover .wrapper {
+    padding-bottom: 150px;
+    padding-top: 135px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (max-width: 1250px)
+.wrapper {
+    width: 100%;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.wrapper {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.block-homepage-cover.reach .block-homepage-cover__content {
+    perspective: 0;
+}
+
+@media (max-width: 1250px) and (orientation: landscape)
+.block-homepage-cover__content {
+    width: 400px;
+}
+.block-homepage-cover__content {
+    width: 500px;
+}
+.block-homepage-cover__content h1 {
+    font-family: Gotham,sans-serif;
+    line-height: 1.2;
+}
+
+.has-blue-background-color h1, .has-blue-background-color h2, .has-blue-background-color h3 {
+    color: #fff;
+}
+
+.block-homepage-cover.reach .block-homepage-cover__content .wp-block-button, .block-homepage-cover.reach .block-homepage-cover__subtitle, .block-homepage-cover.reach .block-homepage-cover__title {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 1250px)
+.block-homepage-cover__content h1 .block-homepage-cover__title {
+    font-size: 3.75rem;
+}
+.block-homepage-cover__content h1 .block-homepage-cover__title {
+    font-size: 5.625rem;
+}
+.js .block-homepage-cover__title {
+    transition-delay: .2s;
+}
+.js .block-homepage-cover__content .wp-block-button, .js .block-homepage-cover__subtitle, .js .block-homepage-cover__title {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 1.2s cubic-bezier(.345,0,.145,.995);
+}
+.block-homepage-cover__content h1 span {
+    display: block;
+}
+.block-homepage-cover__title {
+    overflow-wrap: break-word;
+}
+
+.block-homepage-cover.reach .block-homepage-cover__content .wp-block-button, .block-homepage-cover.reach .block-homepage-cover__subtitle, .block-homepage-cover.reach .block-homepage-cover__title {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 1250px)
+.block-homepage-cover__content h1 .block-homepage-cover__subtitle {
+    font-size: 1.5rem;
+}
+.js .block-homepage-cover__subtitle {
+    transition-delay: .3s;
+}
+.js .block-homepage-cover__content .wp-block-button, .js .block-homepage-cover__subtitle, .js .block-homepage-cover__title {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 1.2s cubic-bezier(.345,0,.145,.995);
+}
+.has-white-color.has-white-color {
+    color: #fff;
+}
+@media (max-width: 1250px)
+.has-medium-heading-size.has-medium-heading-size {
+    font-size: 1.5rem;
+}
+.has-medium-heading-size.has-medium-heading-size {
+    font-size: 2.125rem;
+}
+.block-homepage-cover__content h1 span {
+    display: block;
+}
+
+.block-homepage-cover.reach .block-homepage-cover__content .wp-block-button, .block-homepage-cover.reach .block-homepage-cover__subtitle, .block-homepage-cover.reach .block-homepage-cover__title {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.js .block-homepage-cover__content .wp-block-button {
+    transition-delay: .4s;
+}
+.js .block-homepage-cover__content .wp-block-button, .js .block-homepage-cover__subtitle, .js .block-homepage-cover__title {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 1.2s cubic-bezier(.345,0,.145,.995);
+}
+.block-homepage-cover__content .wp-block-button {
+    margin-top: 35px;
+}
+
+.wp-block-button .wp-block-button__link, .wp-block-button .wp-block-button__link[target=_blank] {
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: #f56f46;
+    border-radius: 80px;
+    padding: 21px 32px;
+    white-space: nowrap;
+    transition: all .3s ease-out .07s;
+}
+
+span[data-url] {
+    cursor: pointer;
+}
+@media (max-width: 1250px)
+.wp-block-button__link {
+    display: inline-block;
+}
+.wp-block-button__link {
+    color: #fff;
+    background-color: #32373c;
+    border: none;
+    border-radius: 1.55em;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.125em;
+    padding: .667em 1.333em;
+    text-align: center;
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+.block-homepage-cover.reach .block-homepage-cover__content .wp-block-button, .block-homepage-cover.reach .block-homepage-cover__subtitle, .block-homepage-cover.reach .block-homepage-cover__title {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.js .block-homepage-cover__content .wp-block-button {
+    transition-delay: .4s;
+}
+.js .block-homepage-cover__content .wp-block-button, .js .block-homepage-cover__subtitle, .js .block-homepage-cover__title {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 1.2s cubic-bezier(.345,0,.145,.995);
+}
+.block-homepage-cover__content .wp-block-button {
+    margin-top: 35px;
+}
+
+.block-homepage-cover.reach .block-homepage-cover__content p {
+    opacity: .8;
+    transform: translateX(0);
+}
+
+.js .block-homepage-cover__content p {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 1.2s cubic-bezier(.345,0,.145,.995);
+    transition-delay: .5s;
+}
+.block-homepage-cover__content p {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 70px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}@media (max-width: 1250px) and (orientation: landscape)
+.block-homepage-cover__skeleton {
+    height: 300px;
+}
+
+.block-homepage-cover__skeleton {
+    position: relative;
+    width: 583px;
+    height: 403px;
+}
+#block-homepage-cover__bodymovin {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
