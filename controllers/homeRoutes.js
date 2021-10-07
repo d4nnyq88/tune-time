@@ -7,8 +7,13 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-            
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+        });
+        
+        const user = userData.get({ plain: true });
         res.render('homepage', { 
+            user,
             logged_in: req.session.logged_in 
         });
     } catch (err) {
@@ -24,7 +29,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
       },
     });
        const playlists = playListsData.map((playlist) => playlist.get({ plain: true })); 
-      //  res.render('dashboard',{playlist});
        
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },

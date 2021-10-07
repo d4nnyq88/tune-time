@@ -1,16 +1,20 @@
 <div class="flex-container">
     <div class="pageBanner">
         <h1 class="pageLocation">Dashboard // <span class="playlists">Playlists</span></h1>
+        {{#if logged_in}}
+        <span class="ifSignedIn">- {{user.name}}</span>
+        {{else}}
+        <span class="ifSignedIn">- Not Signed In</span>
+        {{/if}}
     </div>
     <div class="flexCont">
         <div class="recentPlaylist">
             <h1>Recent Playlist</h1>
                 <ul>
-                    <li>{{playlists.[3].name}}</li>
-                    <li>{{user.name}}</li>
-
-                </ul>
-                
+                    {{#each playlists as |playlist|}}
+                    <li>{{playlist.name}}</li>
+                    {{/each}}
+                </ul> 
         </div>
     <div class="currentPlaylist">
         <div class="title-duration-genre">
