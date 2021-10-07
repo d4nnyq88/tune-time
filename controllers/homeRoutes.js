@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+const { response } = require('express');
 const sequelize = require('../config/connection');
 const {User, Playlist} = require('../models');
 
@@ -7,15 +8,20 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.user_id, {
+      if(!req.session.logged_in){
+        res.render('homepage')
+      } else{  
+      const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
         });
         
         const user = userData.get({ plain: true });
-        res.render('homepage', { 
+        res.render('homepage'
+        , { 
             user,
             logged_in: req.session.logged_in 
-        });
+        }
+        );}
     } catch (err) {
       res.status(500).json(err);
     }
