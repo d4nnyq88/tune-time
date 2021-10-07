@@ -1,7 +1,11 @@
 <div class="flex-container">
     <div class="pageBanner">
         <h1 class="pageLocation">Homepage<span class="ifSignedIn"></span></h1>
+        {{#if logged_in}}
+        <span class="ifSignedIn">- {{user.name}}</span>
+        {{else}}
         <span class="ifSignedIn">- Not Signed In</span>
+        {{/if}}
     </div>
     <div class="flexCont">
         <div class="recentPlaylist">
