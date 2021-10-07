@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const { Playlist } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newPlaylist = await Playlist.create({
       ...req.body,
-      user_id: 1,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newPlaylist);
