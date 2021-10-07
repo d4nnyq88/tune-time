@@ -1,10 +1,61 @@
+:root {
+  --green: #04aa6d;
+  --gray: #333333;
+}
+
+/* Import Google Fonts: Josefin Sans */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Josefin Sans' !important;
+  margin: 0;
+  background: var(--gray);
+  color: var(--green);
+}
+
 /* Header css */
-.menu {
-  float: right;
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.logoAndMenu {
+  display: flex;
+  width: 75%;
+  align-items: center;
+  grid-gap: 1em;
+  padding: 0 2em;
+}
+.registration {
+  width: 25%;
+  display: flex;
+  grid-gap: 1em;
+  justify-content: flex-end;
+  padding: 0 2em;
+}
+.pageBanner {
+  padding: 1em 2em;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pageLocation {
+  font-size: 1.4em;
+}
+.playlists {
+  font-size: .7em;
+  color: #fff;
+}
+.ifSignedIn {
+  font-size: 1em;
 }
 .menu ul {
   list-style: none;
-  margin: 8px;
+  margin: 0px;
   padding: 0
 }
 .menu li {
@@ -13,14 +64,29 @@
 }
 .menu a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: bold;
-  font-family: 'Lato';
+  font-family: 'Josefin Sans' !important;
+  font-weight: 500;
 }
 .menu a:hover {
   text-decoration: underline;
+}
+
+.menuLink {
+  color: #ffffff;
+  font-family: 'Josefin Sans' !important;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1em;
+  background: var(--green);
+  border-radius: 2em;
+}
+
+.signin {
+  background: var(--gray);
 }
 
 .flexCont {
@@ -28,10 +94,17 @@
   width: 100%;
 }
 
+.flex-container {
+  background: lightgray;
+}
 
-.flex-container{
-    background-color: lightgray;
-    height: 100vh;
+.recentPlaylist {
+  width: 100%;
+  padding: 2em;
+}
+.currentPlaylist {
+  width: 100%;
+  padding: 2em;
 }
 
 .logo{
@@ -40,12 +113,6 @@
     height: 10vh;
     text-align: center;
     color:black;
-}
-
-.Recent-playlist{
-    background-color:#ff5500;
-    border: 1px solid black;
-    width: 100%;
 }
 
 ul li a { 
@@ -60,13 +127,11 @@ ul li a {
     
  }
 
- .title-duration-genre{
-     line-height: 5px;
-     margin-bottom: 50px;
-     text-align: center;
+ .title-duration-genre {  
+  text-align: left;
  }
 
- .duration, .genre{
+ .duration, .genre {
      font-size: 22px;
      color:black;
  }
@@ -81,9 +146,6 @@ ul li a {
     color: black;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
 form {
   border: 3px solid #f1f1f1;
   width: 50%;
@@ -115,11 +177,14 @@ input[type=text], input[type=password], select {
 .buttonContainer button {
   background-color: #04AA6D;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 25px 0px;
+  margin: 0px 0;
   border: none;
   cursor: pointer;
   width: 100%;
+  font-family: 'Josefin Sans' !important;
+  font-size: 1.5em;
+  font-weight: 500;
 }
 
 button {
@@ -165,15 +230,85 @@ span.psw {
   width: 50%;
   margin: 4em auto;
   overflow: auto;
-  height: 700px;
+  height: 420px;
+}
+
+.trackDetails {
+  color: #fff;
+  padding: .5em 1em;
+  display: flex;
+  grid-gap: 1em;
+}
+
+.trackDetails a {
+  color: #04aa6d;
+  text-decoration: none;
+  padding-right: .3em;
+}
+
+.greenSep {
+  color: #04aa6d;
+}
+
+.buttonsRow button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 800;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonsRow i {
+  font-size: 1.2em;
+  margin: 0 .5em;
+}
+
+.listDetails {
+  font-weight: 300;
+  font-size: .7em;
+  color: #d1d1d1;
+}
+
+#generateNew {
+  background-color: #333;
 }
 
 .userPlaylist::-webkit-scrollbar {
-  opacity: 0.6;
+  background: #04AA6D;
+}
+
+.userPlaylist::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  transition: 150ms ease-in-out;
+}
+
+.userPlaylist::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  transition: 150ms ease-in-out;
+}
+
+.buttonsRow {
+  display: flex;
+  width: 50%;
+  grid-gap: 1em;
+  margin: -2em auto;
+}
+
+.trackDetails {
+  color: #fff;
+  padding: .5em 1em;
 }
 
 .promptForm {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;
