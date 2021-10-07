@@ -19,8 +19,11 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
 
-       const playLists = await Playlist.findByPk(req.session.user_id);
-       const playlist = playLists.get({ plain: true }); 
+       const playListsData = await Playlist.findAll({where: {
+        user_id: req.session.user_id,
+      },
+    });
+       const playlists = playListsData.map((playlist) => playlist.get({ plain: true })); 
       //  res.render('dashboard',{playlist});
        
         const userData = await User.findByPk(req.session.user_id, {
@@ -33,7 +36,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.render('dashboard', {
             user,
             logged_in: true,
-            playlist
+            playlists,
         });
 
     } catch (err) {
