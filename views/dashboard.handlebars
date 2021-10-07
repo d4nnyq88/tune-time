@@ -22,10 +22,9 @@
             <h2><span class="nameOfList">Playlist: </span><span class="genreList">Genre - </span><span class="durationList">10 min.</span></h2>
         </div>
         <ol class="track-list">
-            <li>Lil Wayne- She Will ft.Drake</li>
-            <li>J.cole- Pride is The Devil ft.Lil Baby</li>
-            <li>Dababy- BOP</li>
-            <li>lil Baby- sum 2 Prove</li>
+            {{#each playlists.[0].track_list as |track|}}
+            <li class="track">{{track.name}} - {{track.artist}} | <span class="trackDuration">{{track.duration}}</span></li>
+            {{/each}}
         </ol>
     </div>
 </div>
@@ -72,9 +71,13 @@
             let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;
             let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
             let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
+            let playListID = parseInt(event.target.parentElement.id);
+
+            let trackListItems = `{{playlists.[${playListID}].track_list.[0].name}}`;
+            document.querySelector(`.track-list`).innerHTML = trackListItems;
 
             nameHTML.innerHTML = playListName + ': ';
-            genreHTML.innerHTML = playListGenre + '- ';
+            genreHTML.innerHTML = playListGenre + ' - ';
             durationHTML.innerHTML = playListDuration;
         })
     })

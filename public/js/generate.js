@@ -8,6 +8,13 @@ durationMS.forEach(duration => {
     duration.innerHTML = minuteDuration + ' Min.';
 })
 
+const trackDurations = document.querySelectorAll(`.trackDuration`);
+trackDurations.forEach(track => {
+    let ms = parseInt(track.innerHTML);
+    let minuteDuration = Math.floor(moment.duration(ms).asMinutes());
+    track.innerHTML = minuteDuration + ' Min.';
+})
+
 // Alter Playlist Index // Converting Index from starting at 0 to starting at 1
 const indexes = document.querySelectorAll(`.index`);
 indexes.forEach(index => {
