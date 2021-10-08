@@ -237,13 +237,9 @@ header {
   overflow-y: auto;
   border-bottom: solid 15px var(--green);
 }
-.currentPlaylist {
-  width: 60%;
-  padding: 2em;
-}
 
 .dashboardRight {
-  width: 85%;
+  width: 100%;
 }
 
 .logo{
@@ -552,13 +548,6 @@ span.psw {
   padding-bottom: .5em;
   margin: 3em auto -1em;
 }
-.currentPlaylist {
-  width: 100%;
-  padding: 2em;
-  max-height: 670px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 .promptForm form {
   width: 80%;
   border: none;
@@ -566,6 +555,14 @@ span.psw {
   padding: 0;
   /* transition: 150ms ease-in-out; */
   color: #fff;
+}
+
+.currentPlaylist {
+  width: 95.3%;
+  padding: 2em;
+  max-height: 670px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .promptForm form button {
