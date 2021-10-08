@@ -39,10 +39,11 @@ header {
   justify-content: flex-end;
   padding: 0 2em;
 }
-.playListItem {
-  cursor: pointer;
+.playListName:hover {
+  transition: 150ms ease-in-out;
+  color: var(--green);
 }
-.title-duration-genre h2 span {
+.title-duration-genre h2 span:not(.greenSep) {
   color: #333;
 }
 .track {
@@ -60,10 +61,14 @@ header {
 }
 .pageLocation {
   font-size: 1.4em;
+  width: 100%;
 }
 .track-list {
   display: flex;
-  flex-direction: column;
+  height: 100%;
+  flex-wrap: wrap;
+  width: 100%;
+  grid-gap: 2em;
 }
 .playListTracks {
   display: flex;
@@ -74,6 +79,7 @@ header {
   color: #fff;
 }
 .playListName {
+  transition: 150ms ease-in-out;
   color: #333;
   cursor: pointer;
 }
@@ -84,6 +90,8 @@ header {
 }
 .ifSignedIn {
   font-size: 1em;
+  width: 100%;
+  text-align: right;
 }
 .menu ul {
   list-style: none;
@@ -154,15 +162,16 @@ header {
 
 .dashboardLeftBottom {
   height: 100%;
-  border-right: solid 16px var(--green);
+  border-right: solid 15px var(--green);
   display: flex;
   flex-wrap: wrap;
   overflow-x: hidden;
   overflow-y: hidden;
+  width: 100%;
 }
 
 .trackImage {
-  width: 25%;
+  width: 33.333%;
   height: auto;
 }
 
@@ -209,7 +218,7 @@ header {
 .logoHomepage {
   height: auto;
   margin: 0 auto;
-  max-width: 45%;
+  max-width: 40%;
 }
 
 .homepageLeftBottom {
@@ -236,6 +245,7 @@ header {
   overflow-x: hidden;
   overflow-y: auto;
   border-bottom: solid 15px var(--green);
+  border-right: 15px solid var(--green);
 }
 
 .dashboardRight {
@@ -381,7 +391,21 @@ button {
 }
 
 button:hover {
-  opacity: 0.8;
+  background: #333;
+  transition: 150ms ease-in-out;
+}
+.buttonContainer i {
+  font-size: .7em;
+}
+.dashboardLogo {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.dashboardLogoImage {
+  max-width: 10%;
 }
 
 .cancelbtn {
@@ -463,7 +487,13 @@ span.psw {
   background-color: #333;
 }
 
+.dashboardRight {
+  width: 100%;
+  border-left: 15px solid var(--green);
+}
+
 .recentPlaylist::-webkit-scrollbar {
+  margin-right: -15px;
   background: #04AA6D;
 }
 
@@ -491,6 +521,11 @@ span.psw {
 .currentPlaylist::-webkit-scrollbar-thumb:hover {
   background: #000;
   transition: 150ms ease-in-out;
+}
+
+.trackElem {
+  height: auto;
+  width: 48%;
 }
 
 .userPlaylist::-webkit-scrollbar {
