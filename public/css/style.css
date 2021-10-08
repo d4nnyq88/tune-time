@@ -120,11 +120,11 @@ header {
 }
 
 .recentPlaylist {
-  width: 100%;
+  width: 40%;
   padding: 2em;
 }
 .currentPlaylist {
-  width: 100%;
+  width: 60%;
   padding: 2em;
 }
 
@@ -193,6 +193,8 @@ input[type=text], input[type=password], select {
   justify-content: center;
   align-items: center;
   padding: 0em 0;
+  position: fixed;
+  bottom: 0;
 }
 
 .buttonContainer button {
@@ -331,6 +333,22 @@ span.psw {
   background-color: #333;
 }
 
+.currentPlaylist::-webkit-scrollbar {
+  background: #04AA6D;
+}
+
+.currentPlaylist::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  transition: 150ms ease-in-out;
+}
+
+.currentPlaylist::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  transition: 150ms ease-in-out;
+}
+
+
 .userPlaylist::-webkit-scrollbar {
   background: #04AA6D;
 }
@@ -386,7 +404,13 @@ span.psw {
   padding-bottom: .5em;
   margin: 3em auto -1em;
 }
-
+.currentPlaylist {
+  width: 100%;
+  padding: 2em;
+  max-height: 670px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .promptForm form {
   width: 80%;
   border: none;

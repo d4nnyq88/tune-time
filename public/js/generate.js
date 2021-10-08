@@ -1,61 +1,5 @@
 // Playlist Generator
 
-// Alter Playlist Durations // Converting from Milliseconds to Minutes
-const durationMS = document.querySelectorAll(`.durationMS`);
-durationMS.forEach(duration => {
-    let ms = parseInt(duration.innerHTML);
-    let minuteDuration = Math.floor(moment.duration(ms).asMinutes());
-    duration.innerHTML = minuteDuration + ' Min.';
-})
-
-const trackDurations = document.querySelectorAll(`.trackDuration`);
-trackDurations.forEach(track => {
-    let ms = parseInt(track.innerHTML);
-    let minuteDuration = Math.floor(moment.duration(ms).asMinutes());
-    track.innerHTML = minuteDuration + ' Min.';
-})
-
-// Alter Playlist Index // Converting Index from starting at 0 to starting at 1
-const indexes = document.querySelectorAll(`.index`);
-indexes.forEach(index => {
-    let innerIndex = parseInt(index.innerHTML) + 1;
-    index.innerHTML = innerIndex;
-})
-
-const trackLs = document.querySelectorAll(`.track-list`);
-trackLs.forEach(L => {
-    L.style.display = `none`;
-})
-
-const playListNames = document.querySelectorAll(`.playListName`);
-    playListNames.forEach(playlist => {
-        playlist.addEventListener(`click`,event => {
-
-            trackLs.forEach(L => {
-                L.style.display = `none`;
-            })
-
-            document.querySelector(`.playListTracks`).style.display = `none`;
-
-            let nameHTML = document.querySelector(`.nameOfList`);
-            let genreHTML = document.querySelector(`.genreList`);
-            let durationHTML = document.querySelector(`.durationList`);
-
-            let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;
-            let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
-            let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
-            let playListID = parseInt(event.target.parentElement.id);
-            // let playListTrackList = JSON.parse(event.target.getAttribute(`data-tracklist`));
-
-            let playlistToShow = document.querySelector(`.PLTrackList${playListID}`);
-            playlistToShow.style.display = `flex`;
-
-            nameHTML.innerHTML = playListName + ': ';
-            genreHTML.innerHTML = playListGenre + ' - ';
-            durationHTML.innerHTML = playListDuration;
-        })
-    })
-
 // Variables
 const body = $(`body`);
 const generateButton = $(`.generateButton`);
@@ -261,12 +205,9 @@ function generatePlaylist(title,duration,genre) {
         
       })
       buttonsRow.show(1000);
-      
     }
     
     saveButton.addEventListener('click', async (event) => {
-        console.log(saveInfo[0]);
-        console.log('button clicked');
         
         const name = saveInfo[0].name;
         const genre = saveInfo[0].genre;
@@ -274,14 +215,6 @@ function generatePlaylist(title,duration,genre) {
         const reqDuration = saveInfo[0].durationMinutes;
         const realDuration = saveInfo[0].duration;
        
-        console.log(name);
-        console.log(genre);
-        console.log(track_list);
-        console.log(typeof track_list);
-        console.log(reqDuration);
-        console.log(realDuration);
-       
-         
         const response = await fetch(`/api/playlist/`, {
             method: 'POST',
             body: JSON.stringify({ name, genre,track_list,reqDuration,realDuration }),
@@ -292,10 +225,6 @@ function generatePlaylist(title,duration,genre) {
           });
           
           const data = await response.json();
-
-          console.log(response);
-          console.log("data: ",data);
-          console.log(typeof data);
 
           if (response.ok) {
             document.location.replace('/dashboard');
