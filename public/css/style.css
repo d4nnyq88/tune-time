@@ -138,13 +138,31 @@ header {
 .savedListsText {
   padding-left: 0;
   margin-left: 1em;
+  padding-right: 0em;
+}
+
+.descriptionBlock {
+  padding-right: 1em;
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.homepageLeftTop {
+  height: 100%;
+}
+
+.homepageLeftBottom {
+  height: 100%;
+  border-top: 7px solid var(--green);
 }
 
 .recentPlaylist {
   width: 40%;
   padding: 2em 0;
-  min-height: 730px;
+  min-height: 670px;
   border-right: solid 7px var(--green);
+  display: flex;
+  flex-direction: column;
 }
 .currentPlaylist {
   width: 60%;
@@ -220,7 +238,7 @@ input[type=text], input[type=password], select {
   bottom: 0;
 }
 
-.buttonContainer button {
+.buttonContainer button, .buttonContainer a {
   background-color: #04AA6D;
   color: white;
   padding: 25px 0px;
@@ -231,21 +249,42 @@ input[type=text], input[type=password], select {
   font-family: 'Josefin Sans' !important;
   font-size: 1.5em;
   font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+}
+@media (max-width: 1500px) {
+  .recentPlaylist {
+    width: 50%;
+}
 }
 
 .homeLink {
   background-color: #04AA6D;
   color: white;
-  padding: 14px 20px;
+  padding: 14px 0px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 96%;
   display: block;
   text-align: center;
   text-decoration: none;
 }
-
+.animation {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepageRight {
+  overflow-y: hidden !important;
+}
+.animation svg {
+  width: 100% !important;
+  height: 75% !important;
+  transform: scale(3) !important;
+}
 .listItem {
   font-size: 1.4em;
   margin: 1em;

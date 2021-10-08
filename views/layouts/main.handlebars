@@ -30,12 +30,15 @@
     </header>
 
     {{{ body }}}
-     <!-- jQuery Core -->
+     {{!-- <!-- jQuery Core --> --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Moment.js -->
+    {{!-- <!-- Moment.js --> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    {{!-- Lottie JS for Animations --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.13/lottie.min.js" integrity="sha512-srGxQe2w7s50+5/nNgEVKYtBm15zRylJwdjxYnGEZr3mmHFJKFjA/ImA2OKizVzoIDX8XISMHDI1+az9pnumbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/generate.js"></script>
     <script src="/js/dashboard.js"></script>
+    <script src="/js/homepage.js"></script>
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
