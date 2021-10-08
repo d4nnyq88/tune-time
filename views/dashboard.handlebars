@@ -9,25 +9,31 @@
     </div>
     <div class="flexCont">
         <div class="recentPlaylist">
-            <h1>Recent Playlist</h1>
-                <ul>
-                    {{#each playlists as |playlist|}}
-                    <li>{{playlist.name}}</li>
+            <h1 class="borderBottom">Your Saved Playlists</h1>
+                <div class="savedLists">
+                    {{#each playlists as |playlist index|}}
+                    {{log playlist.track_list}}
+                    <div class="listItem playListItem" id="{{index}}"><span class="index">{{index}}</span>) <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span></div>
                     {{/each}}
-                </ul> 
+                </div> 
         </div>
     <div class="currentPlaylist">
         <div class="title-duration-genre">
-            <h1 class="playlist-name">Walk The Dog</h1>
-            <h2 class="duration">10min</h2>
-            <h2 class="genre">Hip-Hop</h2>
+            <h1 class="playlist-name borderBottom">Current Playlist</h1>
+            <h2><span class="nameOfList">Playlist: </span><span class="genreList">Genre - </span><span class="durationList">10 min.</span></h2>
         </div>
-        <ol class="track-list">
-            <li>Lil Wayne- She Will ft.Drake</li>
-            <li>J.cole- Pride is The Devil ft.Lil Baby</li>
-            <li>Dababy- BOP</li>
-            <li>lil Baby- sum 2 Prove</li>
-        </ol>
+        <div class="playListTracks">
+            <div class="track">1. Track Name</div>
+            <div class="track">2. Track Name</div>
+            <div class="track">3. Track Name</div>
+        </div>
+        {{#each playlists as |playlist index|}}
+        <div class="track-list PLTrackList{{index}}" id="trackList{{index}}">
+        {{#each playlist.track_list as |track index|}}
+            <div class="track divstItem" id="track{{index}}"><span class="index">{{index}}</span>. {{track.name}} - {{track.artist}} | <span class="trackDuration">{{track.duration}}</span></li></div>
+        {{/each}}
+        </div>
+        {{/each}}
     </div>
 </div>
 <div class="buttonContainer">
@@ -61,5 +67,4 @@
             <button id="generateNew"><i class="fas fa-undo"></i> Generate New Playlist</button>
         </div>
     </div>
-
 </div>

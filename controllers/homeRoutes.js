@@ -34,7 +34,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
     });
-       const playlists = playListsData.map((playlist) => playlist.get({ plain: true })); 
+       const playlists = playListsData.map((playlist) => playlist.get({ plain: true }));
        
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
@@ -46,7 +46,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.render('dashboard', {
             user,
             logged_in: true,
-            playlists,
+            playlists
         });
 
     } catch (err) {

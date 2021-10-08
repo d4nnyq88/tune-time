@@ -35,6 +35,15 @@ header {
   justify-content: flex-end;
   padding: 0 2em;
 }
+.playListItem {
+  cursor: pointer;
+}
+.title-duration-genre h2 span {
+  color: #333;
+}
+.track {
+  padding: .3em;
+}
 .pageBanner {
   padding: 1em 2em;
   background: var(--green);
@@ -46,9 +55,21 @@ header {
 .pageLocation {
   font-size: 1.4em;
 }
+.track-list {
+  display: flex;
+  flex-direction: column;
+}
+.playListTracks {
+  display: flex;
+  flex-direction: column;
+}
 .playlists {
   font-size: .7em;
   color: #fff;
+}
+.playListName {
+  color: #333;
+  cursor: pointer;
 }
 .ifSignedIn {
   font-size: 1em;
@@ -185,6 +206,36 @@ input[type=text], input[type=password], select {
   font-family: 'Josefin Sans' !important;
   font-size: 1.5em;
   font-weight: 500;
+}
+
+.homeLink {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.listItem {
+  font-size: 1.4em;
+  margin: 1em;
+  font-weight: 700;
+}
+
+.borderBottom {
+  border-bottom: solid 3px #333333;
+  padding-bottom: .5em;
+  display: inline-block;
+  margin-bottom: .5em;
+}
+
+.genreDuration {
+  font-size: .7em;
 }
 
 button {
@@ -359,6 +410,14 @@ span.psw {
 .closeBtn {
   color: #04aa6d;
   cursor: pointer;
+}
+
+/* Main Two Column fixer */
+@media (max-width: 933px) {
+  .flexCont {
+  flex-direction: column;
+  text-align: center;
+  }
 }
 
 /* Change styles for span and cancel button on extra small screens */
