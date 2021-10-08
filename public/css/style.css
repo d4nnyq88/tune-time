@@ -42,7 +42,9 @@ header {
   color: #333;
 }
 .track {
-  padding: .3em;
+  padding: .5em;
+  font-weight: 700;
+  color: #333;
 }
 .pageBanner {
   padding: 1em 2em;
@@ -70,6 +72,11 @@ header {
 .playListName {
   color: #333;
   cursor: pointer;
+}
+@media (max-width: 1540px) {
+  .playListName {
+    font-size: .8em;
+  }
 }
 .ifSignedIn {
   font-size: 1em;
@@ -119,9 +126,25 @@ header {
   background: lightgray;
 }
 
+.savedLists {
+  padding: 0em 0em 0.5em 1em;
+}
+
+.pLs {
+  border-bottom: solid 3px #333333;
+  padding-bottom: 1em;
+}
+
+.savedListsText {
+  padding-left: 0;
+  margin-left: 1em;
+}
+
 .recentPlaylist {
   width: 40%;
-  padding: 2em;
+  padding: 2em 0;
+  min-height: 730px;
+  border-right: solid 7px var(--green);
 }
 .currentPlaylist {
   width: 60%;
