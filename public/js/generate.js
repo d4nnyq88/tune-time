@@ -207,6 +207,7 @@ function generatePlaylist(title,duration,genre) {
       buttonsRow.show(1000);
     }
     
+    if (saveButton) {
     saveButton.addEventListener('click', async (event) => {
         
         const name = saveInfo[0].name;
@@ -225,6 +226,7 @@ function generatePlaylist(title,duration,genre) {
           });
           
           const data = await response.json();
+          console.log(data);
 
           if (response.ok) {
             document.location.replace('/dashboard');
@@ -234,7 +236,7 @@ function generatePlaylist(title,duration,genre) {
           }
         
       });   
-
+    }
 
 async function fetchTracks() {
 

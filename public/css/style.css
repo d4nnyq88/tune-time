@@ -14,6 +14,10 @@ body {
   color: var(--green);
 }
 
+h1 {
+  font-size: 1.7em;
+}
+
 /* Header css */
 header {
   display: flex;
@@ -120,6 +124,10 @@ header {
 .flexCont {
   display: flex;
   width: 100%;
+  min-height: 733px;
+  max-height: 735px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .flex-container {
@@ -131,14 +139,47 @@ header {
 }
 
 .pLs {
-  border-bottom: solid 3px #333333;
   padding-bottom: 1em;
+}
+
+.dashboardLeft {
+  width: 40%;
+}
+
+.dashboardLeftTop {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dashboardLeftBottom {
+  height: 100%;
+  border-right: solid 16px var(--green);
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.trackImage {
+  width: 25%;
+  height: auto;
+}
+
+.numOf {
+  font-size: .6em;
+}
+
+.albumImage {
+  width: 100%;
+  height: 100%;
 }
 
 .savedListsText {
   padding-left: 0;
   margin-left: 1em;
   padding-right: 0em;
+  margin-right: 1em;
 }
 
 .descriptionBlock {
@@ -147,26 +188,62 @@ header {
   font-size: 1.3em;
 }
 
+.homepageLeft {
+  width: 100%;
+  height: 100%;
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 310px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-bottom: solid 15px var(--green);
+  border-right: solid 15px var(--green);
+}
+
 .homepageLeftTop {
   height: 100%;
+  width: 100%;
+}
+
+.logoHomepage {
+  height: auto;
+  margin: 0 auto;
+  max-width: 45%;
 }
 
 .homepageLeftBottom {
   height: 100%;
-  border-top: 7px solid var(--green);
+  width: 100%;
+  border-right: solid 15px var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 345px;
+}
+
+.pageTitle {
+  padding-left: 1em;
 }
 
 .recentPlaylist {
-  width: 40%;
+  width: 100%;
+  height: 100%;
   padding: 2em 0;
-  min-height: 670px;
-  border-right: solid 7px var(--green);
   display: flex;
   flex-direction: column;
+  max-height: 310px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-bottom: solid 15px var(--green);
 }
 .currentPlaylist {
   width: 60%;
   padding: 2em;
+}
+
+.dashboardRight {
+  width: 85%;
 }
 
 .logo{
@@ -252,11 +329,6 @@ input[type=text], input[type=password], select {
   text-decoration: none;
   text-align: center;
 }
-@media (max-width: 1500px) {
-  .recentPlaylist {
-    width: 50%;
-}
-}
 
 .homeLink {
   background-color: #04AA6D;
@@ -299,7 +371,7 @@ input[type=text], input[type=password], select {
 }
 
 .genreDuration {
-  font-size: .7em;
+  font-size: .6em;
 }
 
 button {
@@ -395,6 +467,21 @@ span.psw {
   background-color: #333;
 }
 
+.recentPlaylist::-webkit-scrollbar {
+  background: #04AA6D;
+}
+
+.recentPlaylist::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  transition: 150ms ease-in-out;
+}
+
+.recentPlaylist::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  transition: 150ms ease-in-out;
+}
+
 .currentPlaylist::-webkit-scrollbar {
   background: #04AA6D;
 }
@@ -409,7 +496,6 @@ span.psw {
   background: #000;
   transition: 150ms ease-in-out;
 }
-
 
 .userPlaylist::-webkit-scrollbar {
   background: #04AA6D;

@@ -8,24 +8,28 @@
         {{/if}}
     </div>
     <div class="flexCont">
-        <div class="recentPlaylist homepageLeft">
-            <div class="homepageLeftTop">
-                <h1 class="tuneTime-home savedListsText">TuneTime</h1>
-                {{#if logged_in}}
-                <div class="mockGenerateButton savedListsText">
-                    <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard">Check Saved Lists</a>
-                </div>
-                {{else}}
-                <div class="mockGenerateButton savedListsText">
-                    <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Login</a>
-                </div>
-                {{/if}}
-                <p class="descriptionBlock savedListsText">Your custom TuneTime playlist is just a few clicks away </p>
-                <div class="descriptionBlock savedListsText">
-                    The TuneTime app will auto generate a playlist to get you through you work commute, workout, or any activity over 10 minutes! </p>
+        <div class="left">
+            <div class="homepageLeft">
+                <div class="homepageLeftTop">
+                    <h1 class="tuneTime-home savedListsText">TuneTime</h1>
+                    {{#if logged_in}}
+                    <div class="mockGenerateButton savedListsText">
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard">Check Saved Lists</a>
+                    </div>
+                    {{else}}
+                    <div class="mockGenerateButton savedListsText">
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Login</a>
+                    </div>
+                    {{/if}}
+                    <p class="descriptionBlock savedListsText">Your custom TuneTime playlist is just a few clicks away </p>
+                    <div class="descriptionBlock savedListsText">
+                        The TuneTime app will auto generate a playlist to get you through you work commute, workout, or any activity over 10 minutes! </p>
+                    </div>
                 </div>
             </div>
-            <div class="homepageLeftBottom"></div>
+            <div class="homepageLeftBottom">
+                <img src="/images/Tune-Time-Cropped-Green.png" alt="Logo" class="logoHomepage">
+            </div>
         </div>
     <div class="currentPlaylist homepageRight">
         <div class="animation" id="greenSpeaker"></div>
