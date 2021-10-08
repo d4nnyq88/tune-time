@@ -72,9 +72,13 @@
             let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
             let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
             let playListID = parseInt(event.target.parentElement.id);
+            console.log(playListID);
 
             let trackListItems = `{{playlists.[${playListID}].track_list.[0].name}}`;
             document.querySelector(`.track-list`).innerHTML = trackListItems;
+
+            let trckLst = `{{playlists.[${playListID}].track_list}}`;
+            console.log(trckLst);
 
             nameHTML.innerHTML = playListName + ': ';
             genreHTML.innerHTML = playListGenre + ' - ';
