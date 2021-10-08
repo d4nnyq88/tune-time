@@ -22,6 +22,40 @@ indexes.forEach(index => {
     index.innerHTML = innerIndex;
 })
 
+const trackLs = document.querySelectorAll(`.track-list`);
+trackLs.forEach(L => {
+    L.style.display = `none`;
+})
+
+const playListNames = document.querySelectorAll(`.playListName`);
+    playListNames.forEach(playlist => {
+        playlist.addEventListener(`click`,event => {
+
+            trackLs.forEach(L => {
+                L.style.display = `none`;
+            })
+
+            document.querySelector(`.playListTracks`).style.display = `none`;
+
+            let nameHTML = document.querySelector(`.nameOfList`);
+            let genreHTML = document.querySelector(`.genreList`);
+            let durationHTML = document.querySelector(`.durationList`);
+
+            let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;
+            let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
+            let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
+            let playListID = parseInt(event.target.parentElement.id);
+            // let playListTrackList = JSON.parse(event.target.getAttribute(`data-tracklist`));
+
+            let playlistToShow = document.querySelector(`.PLTrackList${playListID}`);
+            playlistToShow.style.display = `flex`;
+
+            nameHTML.innerHTML = playListName + ': ';
+            genreHTML.innerHTML = playListGenre + ' - ';
+            durationHTML.innerHTML = playListDuration;
+        })
+    })
+
 // Variables
 const body = $(`body`);
 const generateButton = $(`.generateButton`);

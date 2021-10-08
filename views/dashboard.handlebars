@@ -12,6 +12,7 @@
             <h1 class="borderBottom">Your Saved Playlists</h1>
                 <div class="savedLists">
                     {{#each playlists as |playlist index|}}
+                    {{log playlist.track_list}}
                     <div class="listItem playListItem" id="{{index}}"><span class="index">{{index}}</span>) <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span></div>
                     {{/each}}
                 </div> 
@@ -21,11 +22,18 @@
             <h1 class="playlist-name borderBottom">Current Playlist</h1>
             <h2><span class="nameOfList">Playlist: </span><span class="genreList">Genre - </span><span class="durationList">10 min.</span></h2>
         </div>
-        <ol class="track-list">
-            {{#each playlists.[0].track_list as |track|}}
-            <li class="track">{{track.name}} - {{track.artist}} | <span class="trackDuration">{{track.duration}}</span></li>
-            {{/each}}
-        </ol>
+        <div class="playListTracks">
+            <div class="track">1. Track Name</div>
+            <div class="track">2. Track Name</div>
+            <div class="track">3. Track Name</div>
+        </div>
+        {{#each playlists as |playlist index|}}
+        <div class="track-list PLTrackList{{index}}" id="trackList{{index}}">
+        {{#each playlist.track_list as |track index|}}
+            <div class="track divstItem" id="track{{index}}"><span class="index">{{index}}</span>. {{track.name}} - {{track.artist}} | <span class="trackDuration">{{track.duration}}</span></li></div>
+        {{/each}}
+        </div>
+        {{/each}}
     </div>
 </div>
 <div class="buttonContainer">
@@ -60,29 +68,3 @@
         </div>
     </div>
 </div>
-<script>
-    const playListNames = document.querySelectorAll(`.playListName`);
-    playListNames.forEach(playlist => {
-        playlist.addEventListener(`click`,event => {
-            let nameHTML = document.querySelector(`.nameOfList`);
-            let genreHTML = document.querySelector(`.genreList`);
-            let durationHTML = document.querySelector(`.durationList`);
-
-            let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;
-            let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
-            let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
-            let playListID = parseInt(event.target.parentElement.id);
-            console.log(playListID);
-
-            let trackListItems = `{{playlists.[${playListID}].track_list.[0].name}}`;
-            document.querySelector(`.track-list`).innerHTML = trackListItems;
-
-            let trckLst = `{{playlists.[${playListID}].track_list}}`;
-            console.log(trckLst);
-
-            nameHTML.innerHTML = playListName + ': ';
-            genreHTML.innerHTML = playListGenre + ' - ';
-            durationHTML.innerHTML = playListDuration;
-        })
-    })
-</script>

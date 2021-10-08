@@ -41,6 +41,9 @@ header {
 .title-duration-genre h2 span {
   color: #333;
 }
+.track {
+  padding: .3em;
+}
 .pageBanner {
   padding: 1em 2em;
   background: var(--green);
@@ -51,6 +54,14 @@ header {
 }
 .pageLocation {
   font-size: 1.4em;
+}
+.track-list {
+  display: flex;
+  flex-direction: column;
+}
+.playListTracks {
+  display: flex;
+  flex-direction: column;
 }
 .playlists {
   font-size: .7em;
@@ -399,6 +410,14 @@ span.psw {
 .closeBtn {
   color: #04aa6d;
   cursor: pointer;
+}
+
+/* Main Two Column fixer */
+@media (max-width: 933px) {
+  .flexCont {
+  flex-direction: column;
+  text-align: center;
+  }
 }
 
 /* Change styles for span and cancel button on extra small screens */
