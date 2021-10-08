@@ -8,33 +8,31 @@
         {{/if}}
     </div>
     <div class="flexCont">
-        <div class="recentPlaylist">
-            <h1 class="tuneTime-home">TuneTime</h1>
-            {{#if logged_in}}
-            <div class="mockGenerateButton">
-                <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard">Check Saved Lists</a>
+        <div class="left">
+            <div class="homepageLeft">
+                <div class="homepageLeftTop">
+                    <h1 class="tuneTime-home savedListsText">TuneTime</h1>
+                    {{#if logged_in}}
+                    <div class="mockGenerateButton savedListsText">
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard">Check Saved Lists</a>
+                    </div>
+                    {{else}}
+                    <div class="mockGenerateButton savedListsText">
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Login</a>
+                    </div>
+                    {{/if}}
+                    <p class="descriptionBlock savedListsText">Your custom TuneTime playlist is just a few clicks away </p>
+                    <div class="descriptionBlock savedListsText">
+                        The TuneTime app will auto generate a playlist to get you through you work commute, workout, or any activity over 10 minutes! </p>
+                    </div>
+                </div>
             </div>
-            {{else}}
-             <div class="mockGenerateButton">
-                <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Login</a>
+            <div class="homepageLeftBottom">
+                <img src="/images/Tune-Time-Cropped-Green.png" alt="Logo" class="logoHomepage">
             </div>
-            {{/if}}
-            <p>Your custom TuneTime playlist is just a few clicks away </p>
-            <div class="descriptionBlock">
-                The TuneTime app will auto generate a playlist to get you through you work commute, workout, or any activity over 10 minutes! </p>
-            </div>
-                
         </div>
-    <div class="currentPlaylist">
-        <div class="title-duration-genre">
-            <div>
-                
-            </div>
-        </div>
-        <div class="animation">
-            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets2.lottiefiles.com/temp/lf20_zPWMRz.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
-        </div>
+    <div class="currentPlaylist homepageRight">
+        <div class="animation" id="greenSpeaker"></div>
     </div>
 </div>
 {{#if logged_in}}
@@ -43,6 +41,7 @@
 </div>
 {{else}}
 <div class="buttonContainer">
+    <a class="loginButton" href="/login">Log In or Sign Up</a>
 </div>
 {{/if}}
 

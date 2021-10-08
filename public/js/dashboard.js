@@ -27,9 +27,12 @@ trackLs.forEach(L => {
     L.style.display = `none`;
 })
 
+let dashboardLeftBottom = document.querySelector(`.dashboardLeftBottom`);
 const playListNames = document.querySelectorAll(`.playListName`);
     playListNames.forEach(playlist => {
         playlist.addEventListener(`click`,event => {
+
+            dashboardLeftBottom.innerHTML = ``;
 
             trackLs.forEach(L => {
                 L.style.display = `none`;
@@ -42,10 +45,17 @@ const playListNames = document.querySelectorAll(`.playListName`);
             let durationHTML = document.querySelector(`.durationList`);
 
             // Track Info
-            const trackInfo = document.querySelectorAll(`.track`);
-            trackInfo.forEach(track => {
-                trackObj = JSON.parse(track.getAttribute(`data-track`));
-                console.log(trackObj);
+            let trackObj = JSON.parse(playlist.parentElement.getAttribute(`data-track`));
+            trackObj.forEach(track => {
+                let albumImage = track.album.images[0].url;
+                let track1Row = document.createElement(`div`);
+                track1Row.setAttribute(`class`,`trackImage`);
+                let track1Image = document.createElement(`img`);
+                track1Image.setAttribute(`src`,`${albumImage}`);
+                track1Image.setAttribute(`alt`,`albumImage`);
+                track1Image.setAttribute(`class`,`albumImage`);
+                track1Row.append(track1Image);
+                dashboardLeftBottom.append(track1Row);
             })
 
             let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;

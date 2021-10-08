@@ -14,6 +14,10 @@ body {
   color: var(--green);
 }
 
+h1 {
+  font-size: 1.7em;
+}
+
 /* Header css */
 header {
   display: flex;
@@ -42,7 +46,9 @@ header {
   color: #333;
 }
 .track {
-  padding: .3em;
+  padding: .5em;
+  font-weight: 700;
+  color: #333;
 }
 .pageBanner {
   padding: 1em 2em;
@@ -70,6 +76,11 @@ header {
 .playListName {
   color: #333;
   cursor: pointer;
+}
+@media (max-width: 1540px) {
+  .playListName {
+    font-size: .8em;
+  }
 }
 .ifSignedIn {
   font-size: 1em;
@@ -113,19 +124,122 @@ header {
 .flexCont {
   display: flex;
   width: 100%;
+  min-height: 733px;
+  max-height: 735px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .flex-container {
   background: lightgray;
 }
 
-.recentPlaylist {
-  width: 40%;
-  padding: 2em;
+.savedLists {
+  padding: 0em 0em 0.5em 1em;
 }
-.currentPlaylist {
-  width: 60%;
-  padding: 2em;
+
+.pLs {
+  padding-bottom: 1em;
+}
+
+.dashboardLeft {
+  width: 40%;
+}
+
+.dashboardLeftTop {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dashboardLeftBottom {
+  height: 100%;
+  border-right: solid 16px var(--green);
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.trackImage {
+  width: 25%;
+  height: auto;
+}
+
+.numOf {
+  font-size: .6em;
+}
+
+.albumImage {
+  width: 100%;
+  height: 100%;
+}
+
+.savedListsText {
+  padding-left: 0;
+  margin-left: 1em;
+  padding-right: 0em;
+  margin-right: 1em;
+}
+
+.descriptionBlock {
+  padding-right: 1em;
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.homepageLeft {
+  width: 100%;
+  height: 100%;
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 310px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-bottom: solid 15px var(--green);
+  border-right: solid 15px var(--green);
+}
+
+.homepageLeftTop {
+  height: 100%;
+  width: 100%;
+}
+
+.logoHomepage {
+  height: auto;
+  margin: 0 auto;
+  max-width: 45%;
+}
+
+.homepageLeftBottom {
+  height: 100%;
+  width: 100%;
+  border-right: solid 15px var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 345px;
+}
+
+.pageTitle {
+  padding-left: 1em;
+}
+
+.recentPlaylist {
+  width: 100%;
+  height: 100%;
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 310px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-bottom: solid 15px var(--green);
+}
+
+.dashboardRight {
+  width: 100%;
 }
 
 .logo{
@@ -197,7 +311,7 @@ input[type=text], input[type=password], select {
   bottom: 0;
 }
 
-.buttonContainer button {
+.buttonContainer button, .buttonContainer a {
   background-color: #04AA6D;
   color: white;
   padding: 25px 0px;
@@ -208,21 +322,37 @@ input[type=text], input[type=password], select {
   font-family: 'Josefin Sans' !important;
   font-size: 1.5em;
   font-weight: 500;
+  text-decoration: none;
+  text-align: center;
 }
 
 .homeLink {
   background-color: #04AA6D;
   color: white;
-  padding: 14px 20px;
+  padding: 14px 0px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 96%;
   display: block;
   text-align: center;
   text-decoration: none;
 }
-
+.animation {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepageRight {
+  overflow-y: hidden !important;
+}
+.animation svg {
+  width: 100% !important;
+  height: 75% !important;
+  transform: scale(3) !important;
+}
 .listItem {
   font-size: 1.4em;
   margin: 1em;
@@ -237,7 +367,7 @@ input[type=text], input[type=password], select {
 }
 
 .genreDuration {
-  font-size: .7em;
+  font-size: .6em;
 }
 
 button {
@@ -333,6 +463,21 @@ span.psw {
   background-color: #333;
 }
 
+.recentPlaylist::-webkit-scrollbar {
+  background: #04AA6D;
+}
+
+.recentPlaylist::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  transition: 150ms ease-in-out;
+}
+
+.recentPlaylist::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  transition: 150ms ease-in-out;
+}
+
 .currentPlaylist::-webkit-scrollbar {
   background: #04AA6D;
 }
@@ -347,7 +492,6 @@ span.psw {
   background: #000;
   transition: 150ms ease-in-out;
 }
-
 
 .userPlaylist::-webkit-scrollbar {
   background: #04AA6D;
@@ -404,13 +548,6 @@ span.psw {
   padding-bottom: .5em;
   margin: 3em auto -1em;
 }
-.currentPlaylist {
-  width: 100%;
-  padding: 2em;
-  max-height: 670px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 .promptForm form {
   width: 80%;
   border: none;
@@ -418,6 +555,14 @@ span.psw {
   padding: 0;
   /* transition: 150ms ease-in-out; */
   color: #fff;
+}
+
+.currentPlaylist {
+  width: 95.3%;
+  padding: 2em;
+  max-height: 670px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .promptForm form button {

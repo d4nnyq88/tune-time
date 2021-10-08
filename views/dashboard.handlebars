@@ -8,33 +8,41 @@
         {{/if}}
     </div>
     <div class="flexCont">
-        <div class="recentPlaylist">
-            <h1 class="borderBottom">Your Saved Playlists</h1>
-                <div class="savedLists">
-                    {{#each playlists as |playlist index|}}
-                    <div class="listItem playListItem" id="{{index}}"><span class="index">{{index}}</span>) <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span></div>
-                    {{/each}}
-                </div> 
+        <div class="dashboardLeft">
+            <div class="dashboardLeftTop">
+                <div class="recentPlaylist">
+                    <h1 class="borderBottom savedLists savedListsText">Your Saved Playlists | <span class="numOf">{{playlists.length}} Playlist(s)</span></h1>
+                        <div class="savedLists pLs">
+                            {{#each playlists as |playlist index|}}
+                            <div class="listItem playListItem" id="{{index}}" data-track="{{stringify_object playlist.track_list}}"><span class="index">{{index}}</span>) <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span> | <span class="numOf">{{playlist.track_list.length}} Track(s)</span></div>
+                            {{/each}}
+                        </div> 
+                </div>
+                <div class="dashboardLeftBottom">
+                </div>
+            </div>
         </div>
-    <div class="currentPlaylist">
-        <div class="title-duration-genre">
-            <h1 class="playlist-name borderBottom">Current Playlist</h1>
-            <h2><span class="nameOfList">Playlist: </span><span class="genreList">Genre - </span><span class="durationList">10 min.</span></h2>
+        <div class="dashboardRight">
+            <div class="currentPlaylist">
+                <div class="title-duration-genre">
+                    <h1 class="playlist-name borderBottom">Current Playlist</h1>
+                    <h2><span class="nameOfList">Playlist: </span><span class="genreList">Genre - </span><span class="durationList">10 min.</span></h2>
+                </div>
+                <div class="playListTracks default">
+                    <div class="track">1. Track Name</div>
+                    <div class="track">2. Track Name</div>
+                    <div class="track">3. Track Name</div>
+                </div>
+                {{#each playlists as |playlist index|}}
+                <div class="track-list PLTrackList{{index}}" id="trackList{{index}}">
+                {{#each playlist.track_list as |track index|}}
+                    <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <div class="track divstItem" id="{{track.id}}"><span class="index">{{index}}</span><span class="greenSep">)</span> {{track.name}} <span class="greenSep">-</span> {{track.artist}} <span class="greenSep">|</span> <span class="trackDuration">{{track.duration}}</span></li></div>
+                {{/each}}
+                </div>
+                {{/each}}
+            </div>
         </div>
-        <div class="playListTracks">
-            <div class="track">1. Track Name</div>
-            <div class="track">2. Track Name</div>
-            <div class="track">3. Track Name</div>
-        </div>
-        {{#each playlists as |playlist index|}}
-        <div class="track-list PLTrackList{{index}}" id="trackList{{index}}">
-        {{#each playlist.track_list as |track index|}}
-            <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            <div class="track divstItem" id="{{track.id}}" data-track="{{stringify_object track}}"><span class="index">{{index}}</span>. {{track.name}} - {{track.artist}} | <span class="trackDuration">{{track.duration}}</span></li></div>
-        {{/each}}
-        </div>
-        {{/each}}
-    </div>
 </div>
 <div class="buttonContainer">
     <button class="generateButton">Generate New Playlist</button>
