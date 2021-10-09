@@ -43,9 +43,10 @@ const playListNames = document.querySelectorAll(`.playListName`);
             let nameHTML = document.querySelector(`.nameOfList`);
             let genreHTML = document.querySelector(`.genreList`);
             let durationHTML = document.querySelector(`.durationList`);
+            let trackNumHTML = document.querySelector(`.trackNum`);
 
             // Track Info
-            let trackObj = JSON.parse(playlist.parentElement.getAttribute(`data-track`));
+            let trackObj = JSON.parse(playlist.parentElement.getAttribute(`data-trackList`));
             trackObj.forEach(track => {
                 let albumImage = track.album.images[0].url;
                 let track1Row = document.createElement(`div`);
@@ -61,14 +62,17 @@ const playListNames = document.querySelectorAll(`.playListName`);
             let playListName = event.target.parentElement.querySelector(`.playListName`).innerHTML;
             let playListGenre = event.target.parentElement.querySelector(`.listofGenre`).innerHTML;
             let playListDuration = event.target.parentElement.querySelector(`.durationMS`).innerHTML;
+            let playListIndex = event.target.parentElement.querySelector(`.playListIndex`).innerHTML;
+            let playListTrackNum = event.target.parentElement.querySelector(`.numOf`).innerHTML;
             let playListID = parseInt(event.target.parentElement.id);
             // let playListTrackList = JSON.parse(event.target.getAttribute(`data-tracklist`));
 
             let playlistToShow = document.querySelector(`.PLTrackList${playListID}`);
             playlistToShow.style.display = `flex`;
 
-            nameHTML.innerHTML = 'Playlist: ' + playListName + ': ';
-            genreHTML.innerHTML = playListGenre + ' - ';
+            nameHTML.innerHTML = 'Playlist<span class="greenSep">:</span> ' + playListIndex + ' ' + playListName + ': ';
+            genreHTML.innerHTML = playListGenre + ' <span class="greenSep">-</span> ';
             durationHTML.innerHTML = playListDuration;
+            trackNumHTML.innerHTML = playListTrackNum;
         })
     })
