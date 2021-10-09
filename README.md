@@ -6,9 +6,9 @@
 
   ## Steps
   #### Make a Playlist based on your desired duration or activity.
-  [![Make Playlist](./public/images/generate.jpg)](./public/images/generate.jpg)
+  [![Make Playlist](https://raw.githubusercontent.com/d4nnyq88/tune-time/main/public/images/generate.JPG)](https://raw.githubusercontent.com/d4nnyq88/tune-time/main/public/images/generate.JPG)
   #### Keep Generating Lists until you see some tracks you like, then hit save!
-  [![Save Playlist](./public/images/generated.jpg)](./public/images/generated.jpg)
+  [![Save Playlist](https://raw.githubusercontent.com/d4nnyq88/tune-time/main/public/images/generated.JPG)](https://raw.githubusercontent.com/d4nnyq88/tune-time/main/public/images/generated.JPG)
   #### Listen to, Explore, or View your Saved Lists in the Dashboard.
   [![View Playlist](./public/images/dashboardOfficial.jpg)](./public/images/dashboardOfficial.jpg)
 
