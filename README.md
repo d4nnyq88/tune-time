@@ -10,7 +10,7 @@
   ### Keep Generating Lists until you see some tracks you like, then hit save!
   [![Make Playlist](./public/images/generated.jpg)](./public/images/generated.jpg)
   ### Listen to, Explore, or View your Saved Lists in the Dashboard.
-  [![Make Playlist](./public/images/dashboard.jpg)](./public/images/dashboard.jpg)
+  [![Make Playlist](./public/images/dashboardOfficial.jpg)](./public/images/dashboardOfficial.jpg)
 
   ## Table of Contents  
   * [Steps](#steps)

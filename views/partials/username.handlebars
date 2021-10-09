@@ -1,11 +1,11 @@
 {{#if logged_in}}
 <div class="headerButtons">
-    <a class="username">- {{user.name}}</a>
-    <a href="" class="logout">Logout</a>
+    <a class="username"><i class="fas fa-user"></i> {{user.name}}</a>
+    <a href="" class="logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
 </div>
 {{else}}
 <div class="headerButtons">
-    <a href="/login" class="login">Login</a>
-    <a href="/login" class="signup">Sign Up</a>
+    <a href="/login" class="login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+    <a href="/login" class="signup"><i class="fas fa-user-plus"></i> Sign Up</a>
 </div>
 {{/if}}

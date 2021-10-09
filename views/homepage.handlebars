@@ -11,11 +11,11 @@
                     </div>
                     {{#if logged_in}}
                     <div class="mockGenerateButton savedListsText">
-                        <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard">Check Saved Lists</a>
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard"><i class="fas fa-bars"></i> Check Saved Lists</a>
                     </div>
                     {{else}}
                     <div class="mockGenerateButton savedListsText">
-                        <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Login</a>
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </div>
                     {{/if}}
                 </div>
@@ -26,13 +26,13 @@
                 <div class="mockGenerateButton savedListsText">
                     <h1 class="tuneTime-home">TuneTime</h1>
                     <p class="descriptionBlock">You can generate a new playlist.</p>
-                    <a class="mockGenerateButton_link homeLink generateButton" type="submit">Generate Playlist</a>
+                    <a class="mockGenerateButton_link homeLink generateButton" type="submit"><i class="fas fa-plus"></i> Generate Playlist</a>
                 </div>
                 {{else}}
                 <div class="mockGenerateButton savedListsText">
                      <h1 class="tuneTime-home">TuneTime</h1>
                     <p class="descriptionBlock">Or create a free account to begin.</p>
-                    <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Sign Up</a>
+                    <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Sign Up <i class="fas fa-user-plus"></i></a>
                 </div>
                 {{/if}}
             </div>
