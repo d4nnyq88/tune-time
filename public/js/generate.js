@@ -97,19 +97,6 @@ generateButton.on(`click`, event => {
 function promptFormShow() {
     promptForm.show(1000);
 
-    // Add Minutes Text
-    // durationPlaylist.on(`input`,event => {
-    //     if ($(event.target).val() === ``) {
-    //         true
-    //     } else if ($(event.target).val().split(``).length > 1) {
-    //         let durationVal = parseInt($(event.target).val());
-    //         let durationInMinutes = durationVal + ' Minutes';
-    //         $(event.target).val(durationInMinutes);
-    //     } else if ($(event.target).val() === `NaN Minutes`) {
-    //         $(event.target).val() = ``;
-    //     }
-    // })
-
     generateBtn.on(`click`, event => {
         event.preventDefault();
 
@@ -152,15 +139,15 @@ function generatePlaylist(title,duration,genre) {
     userPlaylist.show(1000);
 
     let userList = [];
-    let userPlaylists=[];
+    let userPlaylists= [];
     genreX = genre;
 
     fetchTracks().then(tracks => {
 
         tracks.items.forEach(track => {
             const {track: {name, duration_ms, artists, id, href, album, external_urls}} = track;
-            const release_date = track.track.album.release_date;
-            const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls, release_date);
+            const release_dater = moment(track.track.album.release_date).format(`dddd, MMMM Do YYYY`);
+            const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls, release_dater);
             trackItems.push(newTrack);
         })
 
@@ -299,3 +286,21 @@ function shuffleArray(array) {
   
     return array;
 }
+
+const trackElems = document.querySelectorAll(`.trackElem`);
+trackElems.forEach((elem) => {
+    elem.addEventListener(`click`, async function trackObject(event,index) {
+        let trackIdentityMain = event.target.getAttribute(`data-trackID`);
+        let trackGenre = event.target.parentElement.id;
+        let trackDuration = event.target.querySelector(`.trackDuration`).innerHTML;
+        const response = await fetch(`https://api.spotify.com/v1/tracks/${trackIdentityMain}`, {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+        const track = await response.json();
+        window.location.href = `/track?=${track.name}`;
+        localStorage.setItem(`Selected Track`, JSON.stringify(track));
+        localStorage.setItem(`Track Genre`, trackGenre);
+        localStorage.setItem(`Track Duration`, trackDuration);
+    })
+})
