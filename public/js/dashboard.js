@@ -70,9 +70,9 @@ const playListNames = document.querySelectorAll(`.playListName`);
             let playlistToShow = document.querySelector(`.PLTrackList${playListID}`);
             playlistToShow.style.display = `flex`;
 
-            nameHTML.innerHTML = 'Playlist<span class="greenSep">:</span> ' + playListIndex + ' ' + playListName + ': ';
-            genreHTML.innerHTML = playListGenre + ' <span class="greenSep">-</span> ';
-            durationHTML.innerHTML = playListDuration;
+            nameHTML.innerHTML = 'Playlist<span class="greenSep">:</span> ' + playListIndex + ' ' + playListName;
+            genreHTML.innerHTML = playListGenre;
+            durationHTML.innerHTML = '<span class="greenSep"> - </span>' + playListDuration;
             trackNumHTML.innerHTML = playListTrackNum;
         })
     })

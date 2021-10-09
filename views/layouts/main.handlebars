@@ -20,7 +20,7 @@
         <li><a href="./"><i class="fas fa-home"></i> Home</a></li>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a class="topbarDashLink" href="/dashboard">Dashboard</a></li>
         <li><a id="logout" class="logout">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>

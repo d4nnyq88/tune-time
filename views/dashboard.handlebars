@@ -4,10 +4,10 @@
         <div class="dashboardLeft">
             <div class="dashboardLeftTop">
                 <div class="recentPlaylist">
-                    <h1 class="borderBottom savedLists savedListsText">Your Saved Playlists | <span class="numOf">{{playlists.length}} Playlist(s)</span></h1>
+                    <h1 class="borderBottom savedLists savedListsText playlistItem">Your Saved Playlists <span class="numOf"> | {{playlists.length}} Playlist(s)</span></h1>
                         <div class="savedLists pLs">
                             {{#each playlists as |playlist index|}}
-                            <div class="listItem playListItem" id="{{index}}" data-trackList="{{stringify_object playlist.track_list}}"><span class="playListIndex"><span class="index">{{index}}</span><span class="greenSep">)</span></span> <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span> | <span class="numOf">{{playlist.track_list.length}} Track(s)</span></div>
+                            <div class="listItem playListItem" id="{{index}}" data-trackList="{{stringify_object playlist.track_list}}"><span class="playListIndex"><span class="index">{{index}}</span><span class="greenSep">)</span></span> <span class="playListName">{{playlist.name}}</span> <span class="genreDuration"> <span class="listofGenre"> | {{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span> <span class="numOf"> <span class="greenSep">|</span> {{playlist.track_list.length}} Track(s)</span></div>
                             {{/each}}
                         </div> 
                 </div>
