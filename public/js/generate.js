@@ -1,6 +1,13 @@
 // Playlist Generator
 
 // Variables
+let genreX = ``;
+let genreID = ``;
+let saveInfo = [];
+let minMinutes = 10;
+let maxMinutes = 121;
+
+// Constants
 const body = $(`body`);
 const generateButton = $(`.generateButton`);
 const promptForm = $(`.promptForm`);
@@ -12,23 +19,14 @@ const genrePlaylist = $(`.genres`);
 const userPlaylist = $(`.userPlaylist`);
 const buttonsRow = $(`.buttonsRow`);
 const modalTitle = $(`.hinner`);
-// const saveButton = $(`#save`);
 const saveButton = document.querySelector(`#save`);
 const generateNewButton = $(`#generateNew`);
-
-const minMinutes = 10;
-const maxMinutes = 120;
-
-let saveInfo = [];
-
 const generateBtn = $(`.submitBtn`);
+
+// Initial Actions
 promptForm.hide();
 userPlaylist.hide();
 buttonsRow.hide();
-
-// const userPlaylists = [];
-let genreID = ``;
-let genreX = ``;
 
 // Custom Playlist Object
 class Playlist {
@@ -99,6 +97,19 @@ generateButton.on(`click`, event => {
 function promptFormShow() {
     promptForm.show(1000);
 
+    // Add Minutes Text
+    // durationPlaylist.on(`input`,event => {
+    //     if ($(event.target).val() === ``) {
+    //         true
+    //     } else if ($(event.target).val().split(``).length > 1) {
+    //         let durationVal = parseInt($(event.target).val());
+    //         let durationInMinutes = durationVal + ' Minutes';
+    //         $(event.target).val(durationInMinutes);
+    //     } else if ($(event.target).val() === `NaN Minutes`) {
+    //         $(event.target).val() = ``;
+    //     }
+    // })
+
     generateBtn.on(`click`, event => {
         event.preventDefault();
 
@@ -111,10 +122,7 @@ function promptFormShow() {
         let durationP = durationPlaylist.val();
         let genreP = genrePlaylist.val();
 
-        // console.log(`${titleP}: (Your New Playlist) - (${durationP} minutes) from the genre: ${genreP}`);
-
         generatePlaylist(titleP,durationP,genreP);
-        // generatePlaylist(titleP,durationP);
         playlistPromptForm.hide(1000);
     })
 
@@ -145,18 +153,16 @@ function generatePlaylist(title,duration,genre) {
 
     let userList = [];
     let userPlaylists=[];
-    // console.log(`The duration of the ${title} playlist is ${duration} minutes or ${durationInMs} milliseconds from the ${genre} Genre.`);
     genreX = genre;
 
     fetchTracks().then(tracks => {
+
         tracks.items.forEach(track => {
             const {track: {name, duration_ms, artists, id, href, album, external_urls}} = track;
             const release_date = track.track.album.release_date;
             const newTrack = new Track(name, duration_ms, artists[0].name,id,href,album,external_urls, release_date);
             trackItems.push(newTrack);
         })
-        // console.log(`The Master Playlist is: `);
-        // console.log(trackItems);
 
         const shuffledTracks = [...trackItems];
 
@@ -172,24 +178,17 @@ function generatePlaylist(title,duration,genre) {
                 userList.push(shuffledMasterList[i]);
             }
         }
-        userPlaylist.html(``);
-        // console.log(userList);
-        const durationMinutes = Math.floor(moment.duration(totalDuration).asMinutes());
-        // console.log(`The User Playlist is ${totalDuration} milliseconds long.`);
-        // console.log(`The User Playlist is ${durationMinutes} minutes long.`);
 
+        userPlaylist.html(``);
+        const durationMinutes = Math.floor(moment.duration(totalDuration).asMinutes());
         modalTitle.html(`${title}<span class="listDetails"> <span class="greenSep">|</span> ${durationMinutes} minutes long <span class="greenSep">|</span> ${userList.length} Track(s).</span>`);
 
         let newPlaylist = new Playlist(title,totalDuration,durationMinutes,userList, genre);
         userPlaylists.push(newPlaylist);
-        localStorage.setItem("newPlaylist",newPlaylist);
-        console.log(`User Playlist Is: `);
-        console.log(userPlaylists);
         saveInfo = userPlaylists;
         userList.forEach((track,index) => {
             const trackID = track.id;
             const durationTrackMinutes = Math.floor(moment.duration(track.duration).asMinutes());
-
             const trackElement = $(`
             <div class="trackElement">
                 <iframe src="https://open.spotify.com/embed/track/${trackID}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -259,14 +258,20 @@ async function fetchTracks() {
             return genreID = randomPlaylistID;
             case `Rap`:
             return genreID = `37i9dQZF1DX0XUsuxWHRQd`;
+            case `Rock`:
+            return genreID = `37i9dQZF1DXcF6B6QPhFDv`;
             case `Pop`:
             return genreID = `37i9dQZF1DXarRysLJmuju`;
-            // case `Rock`:
-            // return genreID = `37i9dQZF1DXcF6B6QPhFDv`;
             case `R&B`:
             return genreID = `37i9dQZF1DX4SBhb3fqCJd`;
             case `Country`:
             return genreID = `37i9dQZF1DX1lVhptIYRda`;
+            case `Metal`:
+            return genreID = `37i9dQZF1DWTcqUzwhNmKv`;
+            case `Metalcore`:
+            return genreID = `79QHayucQm6M4wUlUbhQNQ`;
+            case `Hip Hop`:
+            return genreID = `0FAb3s3yJArWnikZbEOO9p`;
         }
         return genreID;
     }
@@ -280,16 +285,14 @@ async function fetchTracks() {
 }
 
 function shuffleArray(array) {
+
     let currentIndex = array.length,  randomIndex;
   
-    // While there remain elements to shuffle...
     while (currentIndex != 0) {
   
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
   
-      // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }

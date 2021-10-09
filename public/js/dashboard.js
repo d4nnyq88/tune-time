@@ -47,15 +47,36 @@ const playListNames = document.querySelectorAll(`.playListName`);
 
             // Track Info
             let trackObj = JSON.parse(playlist.parentElement.getAttribute(`data-trackList`));
-            trackObj.forEach(track => {
+            trackObj.forEach((track,index) => {
+                let trackObject = {
+                    albumImage: track.album.images[0].url,
+                    trackLink: track.external_urls.spotify,
+                    trackName: track.name,
+                    trackID: track.id,
+                    trackReleaseDate: track.releaseDate,
+                    trackArtist: track.artist,
+                    trackDuration: track.duration,
+                    trackMin: Math.floor(moment.duration(track.duration).asMinutes()),
+                    trackNum: index+1
+                }
+                let contentString = `${trackObject.trackNum}) ${trackObject.trackName} - ${trackObject.trackArtist} | ${trackObject.trackMin} Min.`;
+                let contentStringMobile = `${trackObject.trackNum}) ${trackObject.trackName} - ${trackObject.trackArtist}`;
                 let albumImage = track.album.images[0].url;
                 let track1Row = document.createElement(`div`);
                 track1Row.setAttribute(`class`,`trackImage`);
+                let trackLink = document.createElement(`a`);
+                trackLink.setAttribute(`class`,`albumImageLink`);
+                trackLink.setAttribute(`target`,`_blank`);
+                trackLink.setAttribute(`href`,track.external_urls.spotify);
+                trackLink.setAttribute(`title`,`Album Image Link`);
+                trackLink.setAttribute(`data-trackInfo`, contentString);
+                trackLink.setAttribute(`data-trackInfoMobile`, contentStringMobile);
                 let track1Image = document.createElement(`img`);
                 track1Image.setAttribute(`src`,`${albumImage}`);
                 track1Image.setAttribute(`alt`,`albumImage`);
                 track1Image.setAttribute(`class`,`albumImage`);
-                track1Row.append(track1Image);
+                trackLink.append(track1Image)
+                track1Row.append(trackLink);
                 dashboardLeftBottom.append(track1Row);
             })
 
@@ -70,9 +91,9 @@ const playListNames = document.querySelectorAll(`.playListName`);
             let playlistToShow = document.querySelector(`.PLTrackList${playListID}`);
             playlistToShow.style.display = `flex`;
 
-            nameHTML.innerHTML = 'Playlist<span class="greenSep">:</span> ' + playListIndex + ' ' + playListName + ': ';
-            genreHTML.innerHTML = playListGenre + ' <span class="greenSep">-</span> ';
-            durationHTML.innerHTML = playListDuration;
+            nameHTML.innerHTML = 'Playlist<span class="greenSep">:</span> ' + playListIndex + ' ' + playListName;
+            genreHTML.innerHTML = playListGenre;
+            durationHTML.innerHTML = '<span class="greenSep"> - </span>' + playListDuration;
             trackNumHTML.innerHTML = playListTrackNum;
         })
     })

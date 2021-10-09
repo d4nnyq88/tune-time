@@ -1,79 +1,48 @@
 <div class="flex-container">
-    <div class="pageBanner">
-        <h1 class="pageLocation">Homepage<span class="ifSignedIn"></span></h1>
-        <div class="dashboardLogo">
-            <img src="/images/Tune-Time-Cropped-Green.png" alt="logo" class="dashboardLogoImage">
-        </div>
-        {{#if logged_in}}
-        <span class="ifSignedIn">- {{user.name}}</span>
-        {{else}}
-        <span class="ifSignedIn">- Not Signed In</span>
-        {{/if}}
-    </div>
-    <div class="flexCont">
+    {{> header}}
+    <div class="flexCont homeP">
         <div class="left">
             <div class="homepageLeft">
                 <div class="homepageLeftTop">
                     <h1 class="tuneTime-home savedListsText">TuneTime</h1>
-                    {{#if logged_in}}
-                    <div class="mockGenerateButton savedListsText">
-                        <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard">Check Saved Lists</a>
-                    </div>
-                    {{else}}
-                    <div class="mockGenerateButton savedListsText">
-                        <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Login</a>
-                    </div>
-                    {{/if}}
-                    <p class="descriptionBlock savedListsText">Your custom TuneTime playlist is just a few clicks away </p>
+                    <p class="descriptionBlock savedListsText">Your custom TuneTime playlist is just a few clicks away.</p>
                     <div class="descriptionBlock savedListsText">
                         The TuneTime app will auto generate a playlist to get you through you work commute, workout, or any activity over 10 minutes! </p>
                     </div>
+                    {{#if logged_in}}
+                    <div class="mockGenerateButton savedListsText">
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/dashboard"><i class="fas fa-bars"></i> Check Saved Lists</a>
+                    </div>
+                    {{else}}
+                    <div class="mockGenerateButton savedListsText">
+                        <a class="mockGenerateButton_link homeLink" type="submit" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="homepageLeftBottom">
                 <img src="/images/Tune-Time-Cropped-Green.png" alt="Logo" class="logoHomepage">
+                {{#if logged_in}}
+                <div class="mockGenerateButton savedListsText">
+                    <h1 class="tuneTime-home">TuneTime</h1>
+                    <p class="descriptionBlock">You can generate a new playlist.</p>
+                    <a class="mockGenerateButton_link homeLink generateButton" type="submit"><i class="fas fa-plus"></i> Generate Playlist</a>
+                </div>
+                {{else}}
+                <div class="mockGenerateButton savedListsText">
+                     <h1 class="tuneTime-home">TuneTime</h1>
+                    <p class="descriptionBlock">Or create a free account to begin.</p>
+                    <a class="mockGenerateButton_link homeLink" type="submit" href="/login">Sign Up <i class="fas fa-user-plus"></i></a>
+                </div>
+                {{/if}}
             </div>
         </div>
     <div class="currentPlaylist homepageRight">
         <div class="animation" id="greenSpeaker"></div>
     </div>
-</div>
-{{#if logged_in}}
-<div class="buttonContainer">
-    <button class="generateButton"><i class="fas fa-plus"></i> Generate New Playlist</button>
-</div>
-{{else}}
-<div class="buttonContainer">
-    <a class="loginButton" href="/login"><i class="fas fa-sign-in-alt"></i> Log In or Sign Up</a>
-</div>
-{{/if}}
-
-
-    <div class="promptForm" id="promptForm">
-        <div class="formHeader"><h1><div class="hinner">Generate New Playlist Form</div> <span class="closeBtn">X</span></h1></div>
-        <form action="" class="playlistPromptForm">
-            <h2>Title of the New Playlist</h2>
-            <input name="playlistTitle" class="playlistTitle" type="text" placeholder="Title of the New Playlist">
-            <h2>Duration of the New Playlist</h2>
-            <input name="playlistDuration" class="playlistDuration" type="text" placeholder="Duration of the New Playlist... Please enter a number between 10 - 120 minutes">
-            <h2>Genre to Sample</h2>
-            <select class="genres" data-placeholder="Choose a Genre...">
-                <option value="Choose">Choose a Genre...</option>
-                <option value="Random">Random</option>
-                <option value="Rap">Rap</option>
-                <option value="Pop">Pop</option>
-                {{!-- <option value="Rock">Rock</option> --}}
-                <option value="R&B">R&B</option>
-                <option value="Country">Country</option>
-            </select>
-            <button class="submitBtn" type="submit">Generate Playlist</button>
-        </form>
-        <div class="userPlaylist">
-            {{!-- Custom User Playlist will go here --}}
-        </div>
-        <div class="buttonsRow">
-            <button id="save"><i class="fas fa-save"></i> Save this Playlist</button>
-            <button id="generateNew"><i class="fas fa-undo"></i> Generate New Playlist</button>
-        </div>
     </div>
+    {{> generateButton}}
+
+
+    {{> playlistGenerateForm}}
 </div>

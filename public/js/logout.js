@@ -11,5 +11,8 @@ const logout = async () => {
     }
   };
   
-  document.querySelector('#logout').addEventListener('click', logout);
+  let logoutButtons = document.querySelectorAll('.logout');
+  logoutButtons.forEach(button => {
+    button.addEventListener('click', logout);
+  })
   

@@ -1,23 +1,13 @@
 <div class="flex-container">
-    <div class="pageBanner">
-        <h1 class="pageLocation">Dashboard // <span class="playlists">Playlists</span></h1>
-        <div class="dashboardLogo">
-            <img src="/images/Tune-Time-Cropped-Green.png" alt="logo" class="dashboardLogoImage">
-        </div>
-        {{#if logged_in}}
-        <span class="ifSignedIn">- {{user.name}}</span>
-        {{else}}
-        <span class="ifSignedIn">- Not Signed In</span>
-        {{/if}}
-    </div>
-    <div class="flexCont">
+    {{> header}}
+    <div class="flexCont dashB">
         <div class="dashboardLeft">
             <div class="dashboardLeftTop">
                 <div class="recentPlaylist">
-                    <h1 class="borderBottom savedLists savedListsText">Your Saved Playlists | <span class="numOf">{{playlists.length}} Playlist(s)</span></h1>
+                    <h1 class="borderBottom savedLists savedListsText playlistItem">Your Saved Playlists <span class="numOf"> | {{playlists.length}} Playlist(s)</span></h1>
                         <div class="savedLists pLs">
                             {{#each playlists as |playlist index|}}
-                            <div class="listItem playListItem" id="{{index}}" data-trackList="{{stringify_object playlist.track_list}}"><span class="playListIndex"><span class="index">{{index}}</span>)</span> <span class="playListName">{{playlist.name}}</span> | <span class="genreDuration"><span class="listofGenre">{{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span> | <span class="numOf">{{playlist.track_list.length}} Track(s)</span></div>
+                            <div class="listItem playListItem" id="{{index}}" data-trackList="{{stringify_object playlist.track_list}}"><span class="playListIndex"><span class="index">{{index}}</span><span class="greenSep">)</span></span> <span class="playListName">{{playlist.name}}</span> <span class="genreDuration"> <span class="listofGenre"> | {{playlist.genre}}</span> - <span class="durationMS">{{playlist.realDuration}}</span></span> <span class="numOf"> <span class="greenSep">|</span> {{playlist.track_list.length}} Track(s)</span></div>
                             {{/each}}
                         </div> 
                 </div>
@@ -26,7 +16,7 @@
             </div>
         </div>
         <div class="dashboardRight">
-            <div class="currentPlaylist">
+            <div class="currentPlaylist dashBCurrent">
                 <div class="title-duration-genre">
                     <h1 class="playlist-name borderBottom">Current Playlist</h1>
                     <h2><span class="nameOfList">Playlist<span class="greenSep">:</span> </span><span class="genreList">Genre <span class="greenSep">-</span> </span><span class="durationList">10 min.</span> <span class="greenSep">|</span> <span class="trackNum"># of Tracks</span></h2>
@@ -40,44 +30,23 @@
                 <div class="track-list PLTrackList{{index}}" id="trackList{{index}}">
                 {{#each playlist.track_list as |track index|}}
                 <div class="trackElem">
-                    {{!-- <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> --}}
-                    <div class="track divstItem" id="{{track.id}}"><span class="index">{{index}}</span><span class="greenSep">)</span> {{track.name}} <span class="greenSep">-</span> {{track.artist}} <span class="greenSep">|</span> <span class="trackDuration">{{track.duration}}</span></li></div>
+                    <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <div class="track divstItem" id="{{track.id}}">
+                        <span class="index">{{index}}</span>
+                        <span class="greenSep">)</span> 
+                        <a href="{{track.external_urls.spotify}}" class="trackHref trackLink" target="_blank">{{track.name}}</a>
+                        <span class="greenSep">-</span> {{track.artist}} 
+                        <span class="greenSep">|</span> 
+                        <span class="trackDuration">{{track.duration}}</span>
+                    </div>
                 </div>
                 {{/each}}
                 </div>
                 {{/each}}
             </div>
         </div>
-</div>
-<div class="buttonContainer">
-    <button class="generateButton"><i class="fas fa-plus"></i> Generate New Playlist</button>
-</div>
-
-    <div class="promptForm" id="promptForm">
-        <div class="formHeader"><h1><div class="hinner">Generate New Playlist Form</div> <span class="closeBtn">X</span></h1></div>
-        <form action="" class="playlistPromptForm">
-            <h2>Title of the New Playlist</h2>
-            <input name="playlistTitle" class="playlistTitle" type="text" placeholder="Title of the New Playlist">
-            <h2>Duration of the New Playlist</h2>
-            <input name="playlistDuration" class="playlistDuration" type="text" placeholder="Duration of the New Playlist... Please enter a number between 10 - 120 minutes">
-            <h2>Genre to Sample</h2>
-            <select class="genres" data-placeholder="Choose a Genre...">
-                <option value="Choose">Choose a Genre...</option>
-                <option value="Random">Random</option>
-                <option value="Rap">Rap</option>
-                <option value="Pop">Pop</option>
-                {{!-- <option value="Rock">Rock</option> --}}
-                <option value="R&B">R&B</option>
-                <option value="Country">Country</option>
-            </select>
-            <button class="submitBtn" type="submit">Generate Playlist</button>
-        </form>
-        <div class="userPlaylist">
-            {{!-- Custom User Playlist will go here --}}
-        </div>
-        <div class="buttonsRow">
-            <button id="save"><i class="fas fa-save"></i> Save this Playlist</button>
-            <button id="generateNew"><i class="fas fa-undo"></i> Generate New Playlist</button>
-        </div>
     </div>
+   {{> generateButton}}
+
+    {{> playlistGenerateForm}}
 </div>
