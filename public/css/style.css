@@ -103,7 +103,9 @@ header {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  grid-gap: 2em;
+  -webkit-column-gap: 2em;
+          column-gap: 2em;
+  row-gap: 0em;
 }
 
 .playListTracks {

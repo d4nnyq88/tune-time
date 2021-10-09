@@ -72,7 +72,8 @@ header {
   height: 100%;
   flex-wrap: wrap;
   width: 100%;
-  grid-gap: 2em;
+  column-gap: 2em;
+  row-gap: 0em;
 }
 .playListTracks {
   display: flex;
