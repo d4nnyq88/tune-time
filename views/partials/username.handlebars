@@ -1,0 +1,11 @@
+{{#if logged_in}}
+<div class="headerButtons">
+    <a class="username">- {{user.name}}</a>
+    <a href="" class="logout">Logout</a>
+</div>
+{{else}}
+<div class="headerButtons">
+    <a href="/login" class="login">Login</a>
+    <a href="/login" class="signup">Sign Up</a>
+</div>
+{{/if}}

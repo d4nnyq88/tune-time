@@ -40,7 +40,7 @@ header {
   padding: 0 2em;
 }
 .playListName:hover {
-  transition: 150ms ease-in-out;
+  transition: 500ms ease-in-out;
   color: var(--green);
 }
 .title-duration-genre h2 span:not(.greenSep) {
@@ -79,9 +79,28 @@ header {
   color: #fff;
 }
 .playListName {
-  transition: 150ms ease-in-out;
+  transition: 500ms ease-in-out;
   color: #333;
   cursor: pointer;
+  position: relative;
+}
+.playListName::before {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 13%;
+  background: var(--gray);
+  transform: scale(0,1);
+  transform-origin: left;
+ transition: 500ms ease-in-out;
+}
+.playListName:hover::before {
+  transform: scale(1,1);
+  height: 13%;
+  background: var(--green);
+ transition: 500ms ease-in-out;
 }
 @media (max-width: 1540px) {
   .playListName {
@@ -132,8 +151,8 @@ header {
 .flexCont {
   display: flex;
   width: 100%;
-  min-height: 733px;
-  max-height: 735px;
+  min-height: 700px;
+  max-height: 720px;
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -166,7 +185,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
   width: 100%;
 }
 
@@ -218,7 +237,12 @@ header {
 .logoHomepage {
   height: auto;
   margin: 0 auto;
-  max-width: 40%;
+  max-width: 30%;
+}
+
+.homepageLeftBottom .savedListsText {
+  width: 61%;
+  margin: 0 auto;
 }
 
 .homepageLeftBottom {
@@ -334,19 +358,64 @@ input[type=text], input[type=password], select {
   font-weight: 500;
   text-decoration: none;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: .5em;
 }
-
 .homeLink {
   background-color: #04AA6D;
   color: white;
   padding: 14px 0px;
-  margin: 8px 0;
+  margin: 35px 0 0;
   border: none;
   cursor: pointer;
-  width: 96%;
+  width: 100%;
   display: block;
   text-align: center;
   text-decoration: none;
+}
+.headerButtons {
+  width: 100%;
+  text-align: right;
+}
+a.username {
+  padding-right: 1em;
+}
+.headerButtons a:not(.username) {
+  color: var(--green);
+  text-decoration: none;
+  padding: 1em 2em;
+  margin: 0 .3em;
+  background: #fff;
+  border-radius: 0px;
+  position: relative;
+  cursor: pointer;
+  font-weight: bolder;
+  z-index: 1;
+  transition: 500ms ease-in-out;
+}
+.headerButtons a:not(.username):hover {
+  background: #333;
+  color: #fff;
+  transition: 500ms ease-in-out;
+}
+.headerButtons a:not(.username)::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 7%;
+  bottom: 0;
+  left: 0;
+  transform-origin: left;
+  background: #fff;
+  transform: scale(0,1);
+  z-index: 0;
+  transition: 500ms ease-in-out;
+}
+.headerButtons a:not(.username):hover::after {
+  transform: scale(1,1);
+  transition: 500ms ease-in-out;
 }
 .animation {
   height: 100%;
@@ -396,6 +465,7 @@ button:hover {
 }
 .buttonContainer i {
   font-size: .7em;
+  margin-top: -5px;
 }
 .dashboardLogo {
   margin: 0 auto;
@@ -403,6 +473,9 @@ button:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+.homeImageLink {
+  text-align: center;
 }
 .dashboardLogoImage {
   max-width: 10%;
@@ -490,6 +563,22 @@ span.psw {
 .dashboardRight {
   width: 100%;
   border-left: 15px solid var(--green);
+}
+
+.dashboardLeftBottom::-webkit-scrollbar {
+  margin-right: -15px;
+  background: #04AA6D;
+}
+
+.dashboardLeftBottom::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  transition: 150ms ease-in-out;
+}
+
+.dashboardLeftBottom::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  transition: 150ms ease-in-out;
 }
 
 .recentPlaylist::-webkit-scrollbar {

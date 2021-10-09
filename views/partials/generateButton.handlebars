@@ -1,0 +1,9 @@
+{{#if logged_in}}
+<div class="buttonContainer">
+    <button class="generateButton"><i class="fas fa-plus"></i> Generate New Playlist</button>
+</div>
+{{else}}
+<div class="buttonContainer">
+    <a class="loginButton" href="/login"><i class="fas fa-sign-in-alt"></i> Log In or Sign Up</a>
+</div>
+{{/if}}
