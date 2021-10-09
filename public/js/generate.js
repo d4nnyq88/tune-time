@@ -97,6 +97,19 @@ generateButton.on(`click`, event => {
 function promptFormShow() {
     promptForm.show(1000);
 
+    // Add Minutes Text
+    // durationPlaylist.on(`input`,event => {
+    //     if ($(event.target).val() === ``) {
+    //         true
+    //     } else if ($(event.target).val().split(``).length > 1) {
+    //         let durationVal = parseInt($(event.target).val());
+    //         let durationInMinutes = durationVal + ' Minutes';
+    //         $(event.target).val(durationInMinutes);
+    //     } else if ($(event.target).val() === `NaN Minutes`) {
+    //         $(event.target).val() = ``;
+    //     }
+    // })
+
     generateBtn.on(`click`, event => {
         event.preventDefault();
 

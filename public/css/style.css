@@ -183,7 +183,7 @@ header {
 }
 
 .dashboardLeftBottom {
-  max-height: 340px;
+  max-height: 344px;
   border-right: solid 15px var(--green);
   display: flex;
   flex-wrap: wrap;
@@ -327,7 +327,7 @@ form {
 }
 
 form h2 {
-  text-align: center;
+  text-align: left;
 }
 
 input[type=text], input[type=password], select {
@@ -397,7 +397,7 @@ a.username {
   position: relative;
   cursor: pointer;
   font-weight: bolder;
-  z-index: 1;
+  z-index: 0;
   transition: 500ms ease-in-out;
 }
 .headerButtons a:not(.username):hover {
@@ -503,7 +503,7 @@ button:hover {
 
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: -40px 0 -30px 0;
 }
 
 img.avatar {
@@ -723,9 +723,13 @@ span.psw {
   display: none;
 }
 
+.registrationForm h2 {
+  padding-left: 1em;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 1500px) {
-  .flexCont {
+  .dashB {
     flex-direction: column;
   }
   .dashboardLeft {
@@ -746,7 +750,7 @@ span.psw {
     max-height: 264px;
     border-bottom: solid 15px var(--green);
   }
-  .currentPlaylist {
+  .dashBCurrent {
     width: 95.7%;
     max-height: 390px;
   }
@@ -764,22 +768,76 @@ span.psw {
   }
 }
 
+/* Laptop 1366px */
+@media (max-width: 1366px) {
+  .animation svg {
+    transform: scale(2) !important;
+  }
+}
+
+/* Tablets & Notebooks 1080px - 991px */
 @media (max-width: 1060px) {
   .recentPlaylist {
     width: 100%;
   }
+  .imgcontainer {
+    text-align: right;
+    margin: -40px 15px -30px 0;
+  }
 }
 
-/* Main Two Column fixer */
+@media (max-width: 980px) {
+  .promptForm .buttonsRow {
+    width: 75%;
+  }
+  .promptForm .userPlaylist {
+    width: 75%;
+  }
+  .homepageRight {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-height: 600px;
+  }
+  .animation svg {
+    transform: scale(2) !important;
+  }
+}
+
+/* Main Two Column Breakpoint */
 @media (max-width: 933px) {
+  /* .animation svg {
+    display: none;
+  } */
+  .left {
+    margin-top: -105px;
+  }
   .flexCont {
   flex-direction: column;
+  }
+  .homeP {
+    flex-direction: column-reverse;
+    min-height: 82vh;
+  }
+  .animation {
+    height: 345px !important;
+  }
+  .animation svg {
+    width: 50% !important;
+    transform: scale(1) !important;
+  }
+  .homepageRight {
+    width: 93%;
+    max-height: 125px;
   }
   .dashboardRight {
     width: 97.29%;
     border: none;
   }
   .dashboardLeftBottom {
+    width: 50%;
+  }
+  .trackImage {
     width: 50%;
   }
 }
@@ -798,17 +856,35 @@ span.psw {
     font-size: .85em;
     line-height: 1.3em;
   }
+  .homeP {
+    min-height: 69vh;
+    padding-bottom: 5.5em;
+  }
+}
+
+/* iPhones & iPads 768px */
+@media (max-width: 800px) {
+  .registrationForm {
+    width: 91%;
+  }
 }
 
 @media (max-width: 710px) {
+  .trackImage {
+    width: 100%;
+  }
   .dashboardLeftBottom {
     width: 32%;
   }
 }
 
+/* Smaller Phones 667px */
 @media (max-width: 667px) {
   .dashboardLeftBottom {
     width: 25%;
+  }
+  .promptForm .buttonsRow {
+    flex-direction: column-reverse;
   }
 }
 
@@ -817,7 +893,7 @@ span.psw {
     width: 100%;
   }
   .dashboardLeftBottom {
-    display: none;
+   width: 20%;
   }
   h2 {
     font-size: 1.1em;
@@ -825,7 +901,16 @@ span.psw {
   }
 }
 
+@media (max-width: 570px) {
+  .dashboardLeftBottom {
+    width: 15%;
+  }
+}
+
 @media (max-width: 555px) {
+  .dashboardLeftBottom {
+    width: 10%;
+  }
   h2 {
     font-size: .9em;
     display: flex;
@@ -836,9 +921,28 @@ span.psw {
   }
 }
 
+@media (max-width: 530px) {
+  .dashboardLeftBottom {
+    width: 7%;
+  }
+}
+
+@media (max-width: 520px) {
+  .dashboardLeftBottom {
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
   .headerButtons {
     display: none;
+  }
+  .formHeader h1 {
+    font-size: 1.2em;
+    text-align: left;
+  }
+  .topbarHomeLink {
+    display: none !important;
   }
 }
 
@@ -851,6 +955,23 @@ span.psw {
   }
   .track span:nth-child(4),.track span:nth-child(5) {
     display: none;
+  }
+  .homepageLeft {
+    overflow-y: hidden;
+  }
+  .homepageLeftBottom {
+    flex-direction: column;
+  }
+  .logoHomepage {
+    margin: 1em auto 0;
+    max-width: 20%;
+  }
+  .homepageLeftBottom .savedListsText {
+    width: 92%;
+  }
+  .descriptionBlock {
+    font-weight: 400;
+    font-size: 1.25em;
   }
 }
 
@@ -873,11 +994,16 @@ span.psw {
   h1 {
     font-size: 1.5em;
   }
-  .menu ul li:nth-child(2) {
-    display: none;
+  .menu {
+    width: 100%;
+  }
+  .menu ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
   }
   .topbarDashLink {
-    display: none;
+    display: none !important;
   }
   .genreList {
     display: none;
@@ -885,16 +1011,32 @@ span.psw {
   .listItem {
     font-size: 1.3em;
   }
+  .descriptionBlock {
+    font-size: 1.2em;
+  }
 }
 
+/* World's Smallest Usable Phone 320px */
 @media (max-width: 321px) {
+  .formHeader h1 {
+    font-size: 1em;
+  }
   h1 {
     font-size: 1.4em;
   }
 }
 
+@media (max-width: 306px) {
+  .listItem {
+    grid-gap: 0.2em;
+  }
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
+  .listItem {
+    grid-gap: 0.06em;
+  }
   span.psw {
      display: block;
      float: none;
@@ -904,6 +1046,7 @@ span.psw {
   }
 }
 
+/* Animations */
 @keyframes hide-scroll {
   from, to { overflow: hidden; } 
 }

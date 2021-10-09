@@ -1,9 +1,9 @@
-<h1 class="pageTitle">Login Page</h1>
+<h1 class="pageTitle">Tune Time Login Page</h1>
 
 {{#if logged_in}}
     <h2>You are already logged in!</h2>
 {{else}}
-<form class="login-form">
+<form class="login-form registrationForm">
     <h2>Login</h2>
   <div class="imgcontainer">
     <img src="./images/Tune-Time-Cropped-Green.png" alt="logo" class="logo">
@@ -23,8 +23,8 @@
   </div>
 </form>
 
-<form class="signup-form">
-  <h2>New User Sign Up</h2>
+<form class="signup-form registrationForm">
+  <h2>Create Account</h2>
   <div class="imgcontainer">
     <img src="./images/Tune-Time-Cropped-Green.png" alt="logo" class="logo">
   </div>
@@ -40,9 +40,6 @@
     <input type="password" placeholder="Create Password" id="password-signup"/>
 
     <button type="submit">Sign Up!</button>    
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">    
   </div>
 </form>
 {{/if}}

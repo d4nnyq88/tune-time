@@ -17,10 +17,18 @@
     <header>
         <div class="menu">
         <ul>
-        <li><a href="./"><i class="fas fa-home"></i> Home</a></li>
+        {{#if playlists}}
+        <li><a href="./" class=""><i class="fas fa-home"></i> Home</a></li>
+        {{else}}
+        <li class="topbarHomeLink"><a href="./" class="topbarHomeLink"><i class="fas fa-home"></i> Home</a></li>
+        {{/if}}
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <li><a class="topbarDashLink" href="/dashboard">Dashboard</a></li>
+        {{#if playlists}}
+        <li class="topbarDashLink"><a class="topbarDashLink" href="/dashboard"><i class="fas fa-bars"></i> Dashboard</a></li>
+        {{else}}
+        <li class=""><a class="" href="/dashboard"><i class="fas fa-bars"></i> Dashboard</a></li>
+        {{/if}}
         <li><a id="logout" class="logout">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>
