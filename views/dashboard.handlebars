@@ -30,7 +30,7 @@
                 <div class="track-list PLTrackList{{index}}" id="trackList{{index}}">
                 {{#each playlist.track_list as |track index|}}
                 <div class="trackElem">
-                    {{!-- <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> --}}
+                    <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                     <div class="track divstItem" id="{{track.id}}"><span class="index">{{index}}</span><span class="greenSep">)</span> {{track.name}} <span class="greenSep">-</span> {{track.artist}} <span class="greenSep">|</span> <span class="trackDuration">{{track.duration}}</span></li></div>
                 </div>
                 {{/each}}
