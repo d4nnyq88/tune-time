@@ -2,15 +2,15 @@
 
   [![License Badge: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-  ### An App that generates playlists based on desired duration to accompany your daily activities.
+  #### An App that generates playlists based on desired duration to accompany your daily activities.
 
   ## Steps
-  ### Make a Playlist based on your desired duration or activity.
+  #### Make a Playlist based on your desired duration or activity.
   [![Make Playlist](./public/images/generate.jpg)](./public/images/generate.jpg)
-  ### Keep Generating Lists until you see some tracks you like, then hit save!
-  [![Make Playlist](./public/images/generated.jpg)](./public/images/generated.jpg)
-  ### Listen to, Explore, or View your Saved Lists in the Dashboard.
-  [![Make Playlist](./public/images/dashboardOfficial.jpg)](./public/images/dashboardOfficial.jpg)
+  #### Keep Generating Lists until you see some tracks you like, then hit save!
+  [![Save Playlist](./public/images/generated.jpg)](./public/images/generated.jpg)
+  #### Listen to, Explore, or View your Saved Lists in the Dashboard.
+  [![View Playlist](./public/images/dashboardOfficial.jpg)](./public/images/dashboardOfficial.jpg)
 
   ## Table of Contents  
   * [Steps](#steps)
