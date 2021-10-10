@@ -7,15 +7,14 @@ window.addEventListener(`DOMContentLoaded`, event => {
     let releaseDateTrack = document.querySelector(`#release-dateTrack`);
     let genreTrack = document.querySelector(`#genreTrack`);
     let durationTrack = document.querySelector(`#durationTrack`);
-    let rating = document.querySelector(`#rating`);
+    let rating = document.querySelector(`.starRating`);
     let trackObject = JSON.parse(localStorage.getItem(`Selected Track`));
-    console.log(trackObject);
 
-    songTitle.innerHTML = trackObject.name;
+    songTitle.innerHTML = 'Track: ' + trackObject.name;
     albumCover.setAttribute(`src`,trackObject.album.images[0].url);
     durationTrack.innerHTML = `<span class="trackDuration">Duration: </span> ` + localStorage.getItem(`Track Duration`);
     albumTrack.innerHTML = `<span class="albumName">Album: </span> ` + trackObject.album.name;
-    rating.innerHTML = `<span class="rating">Rating: </span> <div class="starRating"></div>`;
+    rating.style.clipPath = `polygon(0% 0, ${trackObject.popularity}% 0%, ${trackObject.popularity}% 100%, 0 100%)`;
     genreTrack.innerHTML = `<span class="genreName">Genre: </span> ` + localStorage.getItem(`Track Genre`);
     releaseDateTrack.innerHTML = `<span class="release_date">Release Date: </span> ` + moment(trackObject.album.release_date).format(`dddd, MMMM Do | YYYY`);
     if (trackObject.artists.length === 1) {

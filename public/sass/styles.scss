@@ -17,13 +17,20 @@
   background: url(/images/Star-Rating.svg);
   background-size: contain;
   background-repeat: no-repeat;
+  position: relative;
+  transition: 500ms ease-in-out;
 }
 
 #song-title {
   font-size: 40px;
   padding-top: .3em;
   color: var(--green);
+  // color: #333;
   display: block;
+  @media (max-width: 993px) {
+    font-size: 30px;
+    padding-top: 1em;
+  }
 }
 
 .song-container {
@@ -45,7 +52,7 @@
 #album-cover {
   display: flex;
   width: auto;
-  height: 350px;
+  height: 300px;
 }
 
 img {
@@ -59,18 +66,18 @@ img {
 }
 
 span {
-  color: black;
+  color: white;
 }
 
 .fa {
-  color: blue;
+  color: var(--green);
   font-size: 50px;
   cursor: pointer;
   user-select: none;
 }
 
 .fa:hover {
-  color: darkblue;
+  color: var(--green);
 }
 
 .container-fluid {
@@ -83,15 +90,15 @@ span {
 
 /* ============= Animation background ========= */
 .background {
-  background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
+  background: linear-gradient(132deg, #0063a0, #5a528b, #006de9);
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  padding:0;
-  margin:0px;
+  padding: 0;
+  margin: 0px;
 }
 
 .cube {
@@ -100,10 +107,14 @@ span {
   left: 45vw;
   width: 10px;
   height: 10px;
-  border: solid 1px #D7D4E4;
+  border: solid 1px var(--green) !important;
+  -webkit-transform-origin: top left;
   transform-origin: top left;
+  -webkit-transform: scale(0) rotate(0deg) translate(-50%, -50%);
   transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  -webkit-animation: cube 12s ease-in forwards infinite;
   animation: cube 12s ease-in forwards infinite;
+  z-index: 0;
 }
 
 .cube:nth-child(2n) {
@@ -157,5 +168,69 @@ span {
   to {
     transform: scale(20) rotate(960deg) translate(-50%, -50%);
     opacity: 0;
+  }
+}
+
+@media (max-width: 786px) {
+  .trackPageText {
+    font-size: 1.4em;
+  }
+  #song-title {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 625px) {
+  #song-title {
+    font-size: 23px;
+  }
+  .trackPageText {
+    font-size: 1.3em;
+  }
+  #album-cover {
+    height: 365px;
+  }
+  .song-info {
+    line-height: .7;
+  }
+  .song-container {
+    padding-top: 3em;
+  }
+}
+
+@media (max-width: 580px) {
+  h2 {
+    text-align: left;
+  }
+  #song-title {
+    font-size: 21px;
+  }
+  .trackPageText {
+    font-size: 1.2em;
+    line-height: .3em;
+  }
+  #rating {
+    display: flex;
+    align-items: center;
+    grid-gap: .2em;
+    margin-bottom: -.6em;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 535px) {
+  .song-info {
+    width: 65%;
+    margin: 0 auto;
+  }
+  .trackPageText {
+    font-size: 1em;
+    line-height: 1.2em;
+  }
+  #rating {
+    margin-bottom: 0em;
+  }
+  .song-container {
+    padding-top: 1em;
   }
 }

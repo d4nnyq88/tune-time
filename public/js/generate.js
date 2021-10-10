@@ -292,7 +292,7 @@ trackElems.forEach((elem) => {
     elem.addEventListener(`click`, async function trackObject(event,index) {
         let trackIdentityMain = event.target.getAttribute(`data-trackID`);
         let trackGenre = event.target.parentElement.id;
-        let trackDuration = event.target.querySelector(`.trackDuration`).innerHTML;
+        let trackDuration = elem.querySelector(`.trackDuration`).innerHTML;
         const response = await fetch(`https://api.spotify.com/v1/tracks/${trackIdentityMain}`, {
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + token}
