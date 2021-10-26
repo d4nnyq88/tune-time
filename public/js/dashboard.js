@@ -48,7 +48,6 @@ const playListNames = document.querySelectorAll(`.playListName`);
             // Track Info
             let trackObj = JSON.parse(playlist.parentElement.getAttribute(`data-trackList`));
             trackObj.forEach((track,index) => {
-                console.log(track);
                 let trackObject = {
                     albumImage: track.album.images[1].url,
                     trackLink: track.external_urls.spotify,
