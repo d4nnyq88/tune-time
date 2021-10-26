@@ -49,7 +49,7 @@ const playListNames = document.querySelectorAll(`.playListName`);
             let trackObj = JSON.parse(playlist.parentElement.getAttribute(`data-trackList`));
             trackObj.forEach((track,index) => {
                 let trackObject = {
-                    albumImage: track.album.images[0].url,
+                    albumImage: track.album.images[1].url,
                     trackLink: track.external_urls.spotify,
                     trackName: track.name,
                     trackID: track.id,
@@ -61,7 +61,7 @@ const playListNames = document.querySelectorAll(`.playListName`);
                 }
                 let contentString = `${trackObject.trackNum}) ${trackObject.trackName} - ${trackObject.trackArtist} | ${trackObject.trackMin} Min.`;
                 let contentStringMobile = `${trackObject.trackNum}) ${trackObject.trackName} - ${trackObject.trackArtist}`;
-                let albumImage = track.album.images[0].url;
+                let albumImage = track.album.images[1].url;
                 let track1Row = document.createElement(`div`);
                 track1Row.setAttribute(`class`,`trackImage`);
                 let trackLink = document.createElement(`a`);
